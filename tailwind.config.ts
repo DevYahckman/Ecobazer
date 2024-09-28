@@ -15,14 +15,15 @@ const config: Config = {
         softPrimary:'#84D187',
         primary:'#00B207',
         hardPrimary:'#2C742F',
-        danger:'#EA4B48'
+        danger:'#EA4B48',
+        success: '#00b207'
       },
     },
   },
   plugins: [require("daisyui")],
 
   daisyui: {
-    themes: [ "cupcake"],
+    themes: [ "nord"],
   },
 };
 export default config;
