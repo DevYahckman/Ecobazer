@@ -12,6 +12,8 @@ interface shoppingProps {
   subText: string;
 }
 
+
+
 const Banner = () => {
   const shoppingData: shoppingProps[] = [
     {

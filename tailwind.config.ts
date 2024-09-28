@@ -16,7 +16,9 @@ const config: Config = {
         primary:'#00B207',
         hardPrimary:'#2C742F',
         danger:'#EA4B48',
-        success: '#00b207'
+        success: '#00b207',
+        deepGray:'#1a1a1a',
+        
       },
     },
   },
