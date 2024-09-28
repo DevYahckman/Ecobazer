@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image,{StaticImageData} from "next/image";
 import React from "react";
 import banner from "@/app/assets/images/banner.png";
 import packageImg from "@/app/assets/svg/package.svg";
@@ -7,7 +7,7 @@ import vector from "@/app/assets/svg/Vector.svg";
 import shoppingBag from "@/app/assets/svg/shopping-bag.svg";
 
 interface shoppingProps {
-  img: any;
+  img: StaticImageData | string;
   name: string;
   subText: string;
 }
