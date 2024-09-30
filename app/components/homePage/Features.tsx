@@ -94,7 +94,7 @@ const Features = () => {
           ))}
         </div>
         <div
-          className=" bg-cover bg-center h-[428px] text-center py-12 space-y-3"
+          className=" bg-cover bg-center rounded-lg min-h-[428px] text-center py-12 space-y-3"
           style={{ backgroundImage: `url(${deal.src})` }}
         >
           <p className="text-deepGray uppercase font-semibold text-sm">Summer Sale</p>

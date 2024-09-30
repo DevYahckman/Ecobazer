@@ -198,13 +198,13 @@ const TopCategory = () => {
           <div className="flex items mb-4 md:space-x-3">
             <button
               className="bg-white text-black p-2 rounded-full hover:bg-success hover:text-white transition duration-300"
-              onClick={() => splideRef.current?.splide.go("<")} // Go to previous slide
+              // onClick={() => splideRef.current?.splide.go("<")} 
             >
               <FaArrowLeft />
             </button>
             <button
               className="bg-white text-black p-2 rounded-full hover:bg-success hover:text-white transition duration-300"
-              onClick={() => splideRef.current?.splide.go(">")} // Go to next slide
+              // onClick={() => splideRef.current?.splide.go(">")} 
             >
               <FaArrowRight />
             </button>
