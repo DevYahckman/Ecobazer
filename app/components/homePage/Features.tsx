@@ -1,11 +1,10 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import apple from "@/app/assets/images/productOne.png";
 import { productData } from "@/app/mocks/dummyData";
 import { IProducts } from "@/app/interfaces/products";
 import { TiEyeOutline } from "react-icons/ti";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import { FcLikePlaceholder, FcLike } from "react-icons/fc";
+import { FcLikePlaceholder } from "react-icons/fc";
 import deal from "@/app/assets/images/deal.png";
 
 import Image, { StaticImageData } from "next/image";
@@ -46,7 +45,7 @@ const Features = () => {
       <h1 className="header">Featured Products</h1>
       <div className="  my-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 px-10 space-x-2">
        
-        {productData.map((item: any) => (
+        {productData.map((item: IProducts) => (
           <ProductCard
             img={item.img}
             productName={item.productName}
@@ -60,18 +59,18 @@ const Features = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 mx-10 my-5 gap-x-5">
         <div className="">
           <p className="text-deepGray text-base font-semibold">Hot deal</p>
-          {productData.slice(0, 4).map((item: any) => (
+          {productData.slice(0, 4).map((item, i:number) => (
             <HotDealCard
               img={item.img}
               productName={item.productName}
               price={item.price}
-              key={item.productName}
+              key={i}
             />
           ))}
         </div>
         <div className="">
           <p className="text-deepGray text-base font-semibold">Best Seller</p>
-          {productData.slice(0, 4).map((item: any) => (
+          {productData.slice(0, 4).map((item) => (
             <HotDealCard
               img={item.img}
               productName={item.productName}
@@ -82,7 +81,7 @@ const Features = () => {
         </div>
         <div className="">
           <p className="text-deepGray text-base font-semibold">Top Rated</p>
-          {productData.slice(0, 4).map((item: any) => (
+          {productData.slice(0, 4).map((item) => (
             <HotDealCard
               img={item.img}
               productName={item.productName}

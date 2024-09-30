@@ -1,9 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import apple from "@/app/assets/images/productOne.png";
 import testImage from "@/app/assets/svg/shopping-bag.svg";
-import like from "@/app/assets/svg/Vector Two.svg";
-import eye from "@/app/assets/svg/Eye 1.svg";
 import Image, { StaticImageData } from "next/image";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import { TiEyeOutline } from "react-icons/ti";

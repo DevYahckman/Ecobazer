@@ -15,9 +15,10 @@ import ProductCard from "../ProductCard/ProductCard";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 import Image from "next/image";
+import { ICustomerReview, IProducts, ITopCategory } from "@/app/interfaces/products";
 
 const TopCategory = () => {
-  const splideRef = React.useRef<any>(null);
+  const splideRef = React.useRef<number | null>(null);
 
   const settings = {
     type: "loop",
@@ -82,7 +83,7 @@ const TopCategory = () => {
 
       <div className=" my-14   gap-x-7">
         <Splide options={settings}>
-          {topCategory.map((item: any, i: number) => (
+          {topCategory.map((item: ITopCategory, i: number) => (
             <SplideSlide
               key={i}
               className="bg-[#f7fafc] rounded-lg shadow hover:shadow-md cursor-pointer  border border-gray-300 space-y-2 p-3 flex flex-col items-center justify-between group"
@@ -179,7 +180,7 @@ const TopCategory = () => {
         </div>
 
         <div className="  my-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 md:px-10 md:space-x-2">
-          {productData.map((item: any) => (
+          {productData.map((item: IProducts) => (
             <ProductCard
               img={item.img}
               productName={item.productName}
@@ -213,8 +214,8 @@ const TopCategory = () => {
           
 
           <Splide ref={splideRef} options={customerSettings}>
-            {customerReview.map((item: any, i: number) => (
-              <SplideSlide className="bg-[#f7fafc] w-full rounded-lg space-y-4 shadow hover:shadow-md cursor-pointer  border border-gray-300  p-5 ">
+            {customerReview.map((item: ICustomerReview, i: number) => (
+              <SplideSlide key={i} className="bg-[#f7fafc] w-full rounded-lg space-y-4 shadow hover:shadow-md cursor-pointer  border border-gray-300  p-5 ">
                 <Image src={quote} alt="quaote" />
 
                 <p className="text-lightGray font-medium text-base">

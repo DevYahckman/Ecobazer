@@ -14,9 +14,13 @@ import snacks from "@/app/assets/images/snacks 1.png";
 import firstCustomer from "@/app/assets/images/customer-1.png";
 import secondCustomer from "@/app/assets/images/customer-2.png";
 import thirdCustomer from "@/app/assets/images/customer-3.png";
+import {
+  ICustomerReview,
+  IProducts,
+  ITopCategory,
+} from "../interfaces/products";
 
-
-export const productData = [
+export const productData: IProducts[] = [
   {
     img: apple,
     productName: "Green Apple",
@@ -44,7 +48,7 @@ export const productData = [
   },
 ];
 
-export const topCategory = [
+export const topCategory: ITopCategory[] = [
   {
     img: vegitable,
     category: "vegetable",
@@ -113,7 +117,7 @@ export const topCategory = [
   },
 ];
 
-export const customerReview = [
+export const customerReview: ICustomerReview[] = [
   {
     img: firstCustomer,
     name: "Jon Jones",
