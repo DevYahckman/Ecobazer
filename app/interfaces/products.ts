@@ -18,4 +18,5 @@ export interface ICustomerReview{
   img: StaticImageData | string;
   name:string
   review:string
+  rating?:number
 }

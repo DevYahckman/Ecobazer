@@ -16,6 +16,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 import Image from "next/image";
 import { ICustomerReview, IProducts, ITopCategory } from "@/app/interfaces/products";
+import StarRatings from "../rating/StarRatings";
 
 const TopCategory = () => {
   const splideRef = React.useRef<number | null>(null);
@@ -231,7 +232,9 @@ const TopCategory = () => {
                     </div>
                   </div>
 
-                  <div>star</div>
+                  <div>
+                    < StarRatings rating={item.rating} size={24}/>
+                  </div>
                 </div>
               </SplideSlide>
             ))}

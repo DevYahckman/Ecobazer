@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { productData } from "@/app/mocks/dummyData";
@@ -8,6 +9,7 @@ import { FcLikePlaceholder } from "react-icons/fc";
 import deal from "@/app/assets/images/deal.png";
 
 import Image, { StaticImageData } from "next/image";
+import StarRatings from "../rating/StarRatings";
 
 const Features = () => {
   const HotDealCard = ({
@@ -28,6 +30,7 @@ const Features = () => {
           <div className="group-hover:hidden ">
             <p className="text-gray-700 font-medium text-base">{productName}</p>
             <p className="font-semibold text-deepGray mt-2">${price}</p>
+            < StarRatings rating={3.5}/>
           </div>
 
           <div className="hidden group-hover:flex space-x-8 ">

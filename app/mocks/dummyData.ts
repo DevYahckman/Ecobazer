@@ -124,6 +124,7 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
+    rating:3.5
   },
   {
     img: secondCustomer,
@@ -131,6 +132,7 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
+    rating:4
   },
   {
     img: thirdCustomer,
@@ -138,6 +140,7 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
+    rating:5
   },
   {
     img: thirdCustomer,
@@ -145,6 +148,7 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
+    rating:5.5
   },
   {
     img: thirdCustomer,
@@ -152,6 +156,7 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
+    rating:3.7
   },
   {
     img: thirdCustomer,
@@ -159,5 +164,6 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
+    rating:4.5
   },
 ];

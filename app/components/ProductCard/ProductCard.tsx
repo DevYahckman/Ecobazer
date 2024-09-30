@@ -4,6 +4,7 @@ import testImage from "@/app/assets/svg/shopping-bag.svg";
 import Image, { StaticImageData } from "next/image";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import { TiEyeOutline } from "react-icons/ti";
+import StarRatings from "../rating/StarRatings";
 
 interface Props {
   img: StaticImageData;
@@ -49,36 +50,9 @@ const ProductCard = ({ img, productName, price }: Props) => {
             <p className="font-semibold text-deepGray">${price}</p>
 
             {/* Pend for later */}
-            {/* <div>
-              <div className="rating rating-xs">
-                <input
-                  type="radio"
-                  name="rating-5"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-5"
-                  className="mask mask-star-2 bg-orange-400"
-                  defaultChecked
-                />
-                <input
-                  type="radio"
-                  name="rating-5"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-5"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-5"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-              </div>
-            </div> */}
+            <div>
+             < StarRatings rating={3.5} />
+            </div>
           </div>
           <div className="bg-white  p-3 rounded-full ">
             <Image src={testImage} alt="" />
