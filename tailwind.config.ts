@@ -18,6 +18,7 @@ const config: Config = {
         danger:'#EA4B48',
         success: '#00b207',
         deepGray:'#1a1a1a',
+        lightGray:'#808080'
         
       },
     },

@@ -4,7 +4,7 @@ import TopCategory from "./components/homePage/TopCategory";
 
 export default function Home() {
   return (
-    <div>
+    <div >
       <Banner />
       <Features />
       <TopCategory />
