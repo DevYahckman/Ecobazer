@@ -5,6 +5,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { FiHeart } from "react-icons/fi";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { FiPhoneCall } from "react-icons/fi";
+import { GrSearch } from "react-icons/gr";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/assets/svg/logo.svg";
@@ -45,7 +46,7 @@ const AppHeader = () => {
   return (
     <div className="">
       {isMobile ? (
-        <p>mobile</p>
+        <div>mobile</div>
       ) : (
         <div>
           {/* Top */}
@@ -71,7 +72,17 @@ const AppHeader = () => {
               <p className="font-bold text-3xl">Ecobazar</p>
             </div>
 
-            <div className="">3</div>
+            <div className="">
+              {/* <div className="input input-bordered rounded flex items-center ">
+                <label className="flex items-center ">
+                  <input type="text" className="grow" placeholder="Search" />
+                 <GrSearch />
+                 </label>
+                 Search
+                 <button className="bg-success p-4">Search</button>
+                 </div> */}
+
+            </div>
 
             <div className="flex text-deepGray items-center space-x-6">
               <div>
@@ -81,12 +92,12 @@ const AppHeader = () => {
               <div className="flex items-center space-x-4">
                 <HiOutlineShoppingBag size={30} />
                 <div>
-                  <p className="text-sx text-lightGray">
+                  <div className="text-sx text-lightGray">
                     Shopping Cart:
-                    <div className="absolute top-[55px] right-36 bg-red-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full">
+                    <p className="absolute top-[55px] right-36 bg-red-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full">
                       5
-                    </div>
-                  </p>
+                    </p>
+                  </div>
                   <p className=" text-sm text-deepGray font-bold ">$57.00</p>
                 </div>
               </div>
@@ -98,14 +109,19 @@ const AppHeader = () => {
           <div className="flex justify-between items-center bg-gray-50 p-3 px-7">
             <div className="flex space-x-14 ">
               {navItem.map((item, i: number) => (
-                <Link href={"#"} className="text-gray-500 text-sm font-bold">
+                <Link
+                  href={"#"}
+                  className="text-gray-500 text-sm font-bold"
+                  key={i}
+                >
                   {item.name}
                 </Link>
               ))}
             </div>
             <div className="flex items-center space-x-2 text-deepGray font-bold">
+             
               <FiPhoneCall size={20} />
-              <p className="">+34 9474 3434</p>
+              <div>+34 9474 3434</div>
             </div>
           </div>
         </div>
