@@ -5,7 +5,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { FiHeart } from "react-icons/fi";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { FiPhoneCall } from "react-icons/fi";
-import { GrSearch } from "react-icons/gr";
+// import { GrSearch } from "react-icons/gr";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/assets/svg/logo.svg";
