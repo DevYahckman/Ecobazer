@@ -19,8 +19,8 @@ import "react-modern-drawer/dist/index.css";
 interface navProps {
   name: string;
   path: string;
-  icon: any
-  // icon: JSX.Element
+  // icon: any
+  icon: JSX.Element
 }
 
 const AppHeader = () => {
@@ -94,7 +94,7 @@ const AppHeader = () => {
                 <hr className="my-4" />
 
                 {navItem.map((item, i: number) => (
-                  <div className="flex items-center space-x-5 my-5" onClick={()=>{setIsOpen(false)}}>
+                  <div key={i} className="flex items-center space-x-5 my-5" onClick={()=>{setIsOpen(false)}}>
                     <span className="">
 
                     {item.icon}

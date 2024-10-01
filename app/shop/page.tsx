@@ -1,8 +1,13 @@
 import React from 'react'
+// import Image from 'next/image'
 
 const Shop = () => {
   return (
-    <div>Shop</div>
+    <div 
+    >
+
+      
+    </div>
   )
 }
 
