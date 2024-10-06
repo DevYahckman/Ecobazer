@@ -187,6 +187,9 @@ const TopCategory = () => {
               productName={item.productName}
               price={item.price}
               key={item.productName}
+              units={item.units}
+              description={item.description}
+              category={item.category}
             />
           ))}
         </div>
