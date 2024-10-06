@@ -1,7 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import  { useState } from "react";
 import { productData } from "../mocks/dummyData";
-import { IProducts } from "../interfaces/products";
 
 const categoryOption = [
   { label: "fruits", value: "fruits" },

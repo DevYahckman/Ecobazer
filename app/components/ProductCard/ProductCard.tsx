@@ -5,7 +5,6 @@ import sideImageOne from "@/app/assets/images/sideImage_1.png";
 import sideImageTwo from "@/app/assets/images/sideImage_2.png";
 import sideImageThree from "@/app/assets/images/sideImage_3.png";
 import sideImageFour from "@/app/assets/images/sideImage_4.png";
-import productTwo from "@/app/assets/images/productTwo.png";
 import Image, { StaticImageData } from "next/image";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import { TiEyeOutline } from "react-icons/ti";

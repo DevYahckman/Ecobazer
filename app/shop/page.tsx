@@ -5,7 +5,6 @@ import background from "@/app/assets/images/shop-Bannar.png";
 import ShopBtn from "../components/button/ShopBtn";
 import CustomSelects from "../components/customInputs/CustomSelects";
 
-import { productData } from "@/app/mocks/dummyData";
 import { IProducts } from "@/app/interfaces/products";
 import ProductCard from "../components/ProductCard/ProductCard";
 import useFilterGoods from "./useFilterGoods";
@@ -17,7 +16,6 @@ const Shop = () => {
   const {
     categoryOption,
     selectCategories,
-    setSelectCategories,
     filteredGoods,
     handleCategory,
     handlePrice,

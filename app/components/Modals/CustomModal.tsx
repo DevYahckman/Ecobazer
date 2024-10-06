@@ -1,6 +1,6 @@
 "use client";
-import React, { ReactNode, useState } from "react";
-import { Button, Modal, Space } from "antd";
+import React, { ReactNode } from "react";
+import {  Modal } from "antd";
 
 interface Props {
   openModal?: boolean;
