@@ -25,26 +25,66 @@ export const productData: IProducts[] = [
     img: apple,
     productName: "Green Apple",
     price: 14.99,
+    units: 0,
+    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                natus dicta sunt tempore perspiciatis iusto repellendus omnis
+                corrupti sed ducimus.`,
+    category:'fruits'
   },
   {
     img: cabage,
     productName: "Chanise Cabbage",
-    price: 14.99,
+    price: 114.99,
+    units: 20,
+    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                natus dicta sunt tempore perspiciatis iusto repellendus omnis
+                corrupti sed ducimus.`,
+    category:'fruits'
+
   },
   {
     img: lettuce,
     productName: "Green Lettuce",
     price: 14.99,
+    units: 20,
+    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                natus dicta sunt tempore perspiciatis iusto repellendus omnis
+                corrupti sed ducimus.`,
+    category:'vegetables'
+
+  },
+  {
+    img: lettuce,
+    productName: "Water",
+    price: 14.99,
+    units: 20,
+    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                natus dicta sunt tempore perspiciatis iusto repellendus omnis
+                corrupti sed ducimus.`,
+    category:'water'
+
   },
   {
     img: chill,
     productName: "Green Chili ",
     price: 14.99,
+    units: 20,
+    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                natus dicta sunt tempore perspiciatis iusto repellendus omnis
+                corrupti sed ducimus.`,
+    category:'salad'
+
   },
   {
     img: corn,
     productName: "Corn",
     price: 14.99,
+    units: 20,
+    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+                natus dicta sunt tempore perspiciatis iusto repellendus omnis
+                corrupti sed ducimus.`,
+    category:'sald'
+
   },
 ];
 
@@ -124,7 +164,7 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
-    rating:3.5
+    rating: 3.5,
   },
   {
     img: secondCustomer,
@@ -132,7 +172,7 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
-    rating:4
+    rating: 4,
   },
   {
     img: thirdCustomer,
@@ -140,7 +180,7 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
-    rating:5
+    rating: 5,
   },
   {
     img: thirdCustomer,
@@ -148,7 +188,7 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
-    rating:5.5
+    rating: 5.5,
   },
   {
     img: thirdCustomer,
@@ -156,7 +196,7 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
-    rating:3.7
+    rating: 3.7,
   },
   {
     img: thirdCustomer,
@@ -164,6 +204,6 @@ export const customerReview: ICustomerReview[] = [
     review: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
               inventore impedit ducimus. Velit autem provident maxime blanditiis
               enim. Dignissimos vel praesentium sunt, ab optio voluptatem.`,
-    rating:4.5
+    rating: 4.5,
   },
 ];

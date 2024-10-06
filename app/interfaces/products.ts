@@ -5,6 +5,9 @@ export interface IProducts {
   productName: string;
   price:number
   rating?:number
+  units?:number
+  category?:string
+  description:string
 }
 
 export interface ITopCategory{

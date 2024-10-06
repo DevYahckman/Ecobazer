@@ -5,6 +5,7 @@ import packageImg from "@/app/assets/svg/package.svg";
 import group from "@/app/assets/svg/Group.svg";
 import vector from "@/app/assets/svg/Vector.svg";
 import shoppingBag from "@/app/assets/svg/shopping-bag.svg";
+import ShopBtn from "../button/ShopBtn";
 
 interface shoppingProps {
   img: StaticImageData | string;
@@ -57,9 +58,7 @@ const Banner = () => {
             <p className="text-gray-500 text-lg  ">
               Free shipping on all your order. we deliver, you enjoy
             </p>
-            <button className="btn hover:bg-success bg-success mt-4 font-semibold text-white md:w-[30%] rounded-full">
-              Shop Now &rarr;{" "}
-            </button>
+          < ShopBtn/>
           </div>
         </div>
       </div>
