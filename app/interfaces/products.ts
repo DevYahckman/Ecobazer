@@ -1,25 +1,30 @@
-import  { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 
 export interface IProducts {
-  img: StaticImageData ;
+  img: StaticImageData;
   productName: string;
-  price:number
-  rating?:number
-  units?:number
-  category?:string
-  description:string
+  price: number;
+  rating?: number;
+  units?: number;
+  category?: string;
+  description: string;
+  additionalInfo?: {
+    weight?: number;
+    color?: string;
+    type?: string;
+    status?: "Available";
+  };
 }
 
-export interface ITopCategory{
+export interface ITopCategory {
   img: StaticImageData | string;
-  category: string
-  units:number
-  
+  category: string;
+  units: number;
 }
 
-export interface ICustomerReview{
+export interface ICustomerReview {
   img: StaticImageData | string;
-  name:string
-  review:string
-  rating?:number
+  name: string;
+  review: string;
+  rating?: number;
 }

@@ -26,65 +26,96 @@ export const productData: IProducts[] = [
     productName: "Green Apple",
     price: 14.99,
     units: 0,
-    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+    description: ` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
                 natus dicta sunt tempore perspiciatis iusto repellendus omnis
                 corrupti sed ducimus.`,
-    category:'fruits'
+    category: "fruits",
+    additionalInfo: {
+      weight: 3,
+      color: "blue",
+      type: "Organic",
+      status: "Available",
+    },
   },
   {
     img: cabage,
     productName: "Chanise Cabbage",
     price: 114.99,
     units: 20,
-    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+    description: ` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
                 natus dicta sunt tempore perspiciatis iusto repellendus omnis
                 corrupti sed ducimus.`,
-    category:'fruits'
-
+    category: "fruits",
+    additionalInfo: {
+      weight: 3,
+      color: "blue",
+      type: "Organic",
+      status: "Available",
+    },
   },
   {
     img: lettuce,
     productName: "Green Lettuce",
     price: 14.99,
     units: 20,
-    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+    description: ` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
                 natus dicta sunt tempore perspiciatis iusto repellendus omnis
                 corrupti sed ducimus.`,
-    category:'vegetables'
-
+    category: "vegetables",
+    additionalInfo: {
+      weight: 3,
+      color: "blue",
+      type: "Organic",
+      status: "Available",
+    },
   },
   {
     img: lettuce,
     productName: "Water",
     price: 14.99,
     units: 20,
-    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+    description: ` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
                 natus dicta sunt tempore perspiciatis iusto repellendus omnis
                 corrupti sed ducimus.`,
-    category:'water'
-
+    category: "water",
+    additionalInfo: {
+      weight: 3,
+      color: "blue",
+      type: "Organic",
+      status: "Available",
+    },
   },
   {
     img: chill,
     productName: "Green Chili ",
     price: 14.99,
     units: 20,
-    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+    description: ` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
                 natus dicta sunt tempore perspiciatis iusto repellendus omnis
                 corrupti sed ducimus.`,
-    category:'salad'
-
+    category: "salad",
+    additionalInfo: {
+      weight: 3,
+      color: "blue",
+      type: "Organic",
+      status: "Available",
+    },
   },
   {
     img: corn,
     productName: "Corn",
     price: 14.99,
     units: 20,
-    description:` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
+    description: ` Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
                 natus dicta sunt tempore perspiciatis iusto repellendus omnis
                 corrupti sed ducimus.`,
-    category:'sald'
-
+    category: "sald",
+    additionalInfo: {
+      weight: 3,
+      color: "blue",
+      type: "Organic",
+      status: "Available",
+    },
   },
 ];
 
