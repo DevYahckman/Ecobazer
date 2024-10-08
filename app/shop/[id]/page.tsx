@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import sideImageOne from "@/app/assets/images/sideImage_1.png";
 import sideImageTwo from "@/app/assets/images/sideImage_2.png";
@@ -6,6 +6,7 @@ import sideImageThree from "@/app/assets/images/sideImage_3.png";
 import sideImageFour from "@/app/assets/images/sideImage_4.png";
 import { FcLikePlaceholder } from "react-icons/fc";
 import { LuDot } from "react-icons/lu";
+import { PiGreaterThanLight } from "react-icons/pi";
 import StarRatings from "@/app/components/rating/StarRatings";
 import CustomInputNumber from "@/app/components/customsInputNumber/CustomInputNumber";
 import Image, { StaticImageData } from "next/image";
@@ -17,30 +18,53 @@ import { productData } from "@/app/mocks/dummyData";
 import Descriptions from "./Descriptions";
 import Feedback from "./Feedback";
 import AdditionalInfo from "./AdditionalInfo";
+import BreadCrumb from "@/app/components/breadCrumbs/BreadCrumb";
+import Link from "next/link";
 
+
+const src = "https://www.youtube.com/embed/Ibgb2eKGnys";
 
 const SingleProduct = () => {
   const items: TabsProps["items"] = [
     {
       key: "1",
-      label: <span className="text-base text-deepGray font-medium ">Descriptions </span>,
-      children: <Descriptions/>
+      label: (
+        <span className="text-base text-deepGray font-medium ">
+          Descriptions{" "}
+        </span>
+      ),
+      children: <Descriptions src={src} />,
     },
     {
       key: "2",
-      label: <span className="text-base text-deepGray font-medium ">Additional Information </span>,
-      children:< AdditionalInfo/>
+      label: (
+        <span className="text-base text-deepGray font-medium ">
+          Additional Information{" "}
+        </span>
+      ),
+      children: <AdditionalInfo src={src} />,
     },
     {
       key: "3",
-      label: <span className="text-base text-deepGray font-medium ">Customer Feedback </span>,
-      children: <Feedback/>
+      label: (
+        <span className="text-base text-deepGray font-medium ">
+          Customer Feedback{" "}
+        </span>
+      ),
+      children: <Feedback src={src} />,
     },
-    
   ];
   return (
-    <div className="p-5">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-40">
+    <div className="">
+      < BreadCrumb>
+      <Link href={'#'}>Category</Link>
+      < PiGreaterThanLight size={10}/>
+      <Link href={'#'}>Vegetabele</Link>
+      < PiGreaterThanLight size={10}/>
+      <Link href={'#'} className="text-success">Chinese Cabage</Link>
+      </BreadCrumb>
+
+      <div className="p-5 grid grid-cols-1 md:grid-cols-2 min-h-40">
         <div className="flex justify-center items-center">
           <div className="space-y-8">
             {[sideImageOne, sideImageTwo, sideImageThree, sideImageFour].map(
@@ -71,7 +95,8 @@ const SingleProduct = () => {
               <LuDot size={20} />
             </div>
             <div className="font-medium text-sm text-deepGray ">
-              SKU: <span className="font-normal text-gray-600">$ {'price'}</span>
+              SKU:{" "}
+              <span className="font-normal text-gray-600">$ {"price"}</span>
             </div>
           </div>
           <Divider />
@@ -105,22 +130,20 @@ const SingleProduct = () => {
         </div>
       </div>
       <div className="min-h-screen">
-      <Tabs
-            defaultActiveKey="1"
-            items={items}
-            // onChange={handleTabChange}
-            className="my-5"
-            centered
-          />
-
+        <Tabs
+          defaultActiveKey="1"
+          items={items}
+          // onChange={handleTabChange}
+          className="my-5"
+          centered
+        />
       </div>
-
 
       <div>
         <p className="header"> Related Products</p>
 
         <div className="  my-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:px-10 md:space-x-2">
-          {productData.slice(0,4).map((item: IProducts) => (
+          {productData.slice(0, 4).map((item: IProducts) => (
             <ProductCard
               img={item.img}
               productName={item.productName}
@@ -132,7 +155,6 @@ const SingleProduct = () => {
             />
           ))}
         </div>
-        
       </div>
     </div>
   );
