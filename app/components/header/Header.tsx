@@ -5,59 +5,78 @@ import { SlLocationPin } from "react-icons/sl";
 import { FiHeart } from "react-icons/fi";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { FiPhoneCall } from "react-icons/fi";
-// import { GrSearch } from "react-icons/gr";
-import { FaHome,FaBloggerB, FaInfoCircle   } from "react-icons/fa";
-import { FaShop, FaMapLocationDot  } from "react-icons/fa6";
-import { HiOutlineMenuAlt3 } from "react-icons/hi"
+import { FaHome, FaBloggerB, FaInfoCircle } from "react-icons/fa";
+import { FaShop, FaMapLocationDot } from "react-icons/fa6";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { IoCloseSharp } from "react-icons/io5";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/assets/svg/logo.svg";
 import userImage from "@/app/assets/images/customer-2.png";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
+import product from "@/app/assets/images/productOne.png";
+import { Divider } from "antd";
+import CustomBtn from "../button/CustomBtn";
 
 interface navProps {
   name: string;
   path: string;
   // icon: any
-  icon: JSX.Element
+  icon: JSX.Element;
 }
 
 const AppHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [openCart, setOpenCart] = useState(true);
   const isMobile = useCheckIsMobile();
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };
 
+
+  const cartData = [
+    {
+      img:product,
+      name:'Green Apple ',
+      units:10
+    },
+    {
+      img:product,
+      name:'Green Apple ',
+      units:10
+    },
+    
+  ]
+
   const navItem: navProps[] = [
     {
       name: "Home",
       path: "#",
-      icon:<FaHome  size={19}/>
-      
+      icon: <FaHome size={19} />,
     },
     {
       name: "Shop",
       path: "/shop",
-      icon:<FaShop size={19}/>
+      icon: <FaShop size={19} />,
     },
 
     {
       name: "Blog",
       path: "#",
-      icon:<FaBloggerB size={19}/>
+      icon: <FaBloggerB size={19} />,
     },
     {
       name: "About Us",
       path: "#",
-      icon:<FaInfoCircle size={19}/>
+      icon: <FaInfoCircle size={19} />,
     },
     {
       name: "Contact Us",
       path: "#",
-      icon:<FaMapLocationDot size={19}/>
+      icon: <FaMapLocationDot size={19} />,
     },
   ];
   return (
@@ -72,7 +91,7 @@ const AppHeader = () => {
 
             <div className="flex text-deepGray items-center space-x-6">
               <button onClick={toggleDrawer}>
-              <HiOutlineMenuAlt3 size={30} className=" text-white"/>
+                <HiOutlineMenuAlt3 size={30} className=" text-white" />
               </button>
 
               <Drawer
@@ -82,7 +101,7 @@ const AppHeader = () => {
                 className="p-5"
                 size={300}
               >
-                <div className="flex items-start space-x-2" >
+                <div className="flex items-start space-x-2">
                   <Image src={userImage} alt="" className="rounded-full w-12" />
                   <div>
                     <p className="font-bold text-deepGray ">Cornor McGregor</p>
@@ -94,12 +113,17 @@ const AppHeader = () => {
                 <hr className="my-4" />
 
                 {navItem.map((item, i: number) => (
-                  <div key={i} className="flex items-center space-x-5 my-5" onClick={()=>{setIsOpen(false)}}>
-                    <span className="">
-
-                    {item.icon}
-                    </span>
-                    <p className="font-medium text-lg text-lightGray">{item.name}</p>
+                  <div
+                    key={i}
+                    className="flex items-center space-x-5 my-5"
+                    onClick={() => {
+                      setIsOpen(false);
+                    }}
+                  >
+                    <span className="">{item.icon}</span>
+                    <p className="font-medium text-lg text-lightGray">
+                      {item.name}
+                    </p>
                   </div>
                 ))}
               </Drawer>
@@ -148,17 +172,79 @@ const AppHeader = () => {
               </div>
               <span>|</span>
               <div className="flex items-center space-x-4">
-                <HiOutlineShoppingBag size={30} />
+                <HiOutlineShoppingBag
+                  size={30}
+                  onClick={() => {
+                    setOpenCart(!openCart);
+                  }}
+                />
                 <div>
                   <div className="text-sx text-lightGray">
                     Shopping Cart:
-                    <p className="absolute top-[55px] right-36 bg-red-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full">
+                    <p className="absolute top-[55px] right-[170px] bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
                       5
                     </p>
                   </div>
                   <p className=" text-sm text-deepGray font-bold ">$57.00</p>
                 </div>
               </div>
+              {/* Cart Modal */}
+
+              <Drawer
+                open={openCart}
+                onClose={() => {
+                  setOpenCart(false);
+                }}
+                direction="right"
+                className="p-5 flex flex-col"
+                size={300}
+              >
+                <div className="flex items-center text-deepGray justify-between">
+                  <p className="font-semibold ">Shopping Cart (2)</p>
+                  <IoCloseSharp
+                    className="cursor-pointer"
+                    onClick={() => setOpenCart(false)}
+                  />
+                </div>
+                <Divider />
+                {cartData.map((item)=>(
+
+                <div className="flex items-center justify-between">
+                  <div className="my-2 flex space-x-3 items-center">
+                    <Image
+                      src={product}
+                      alt="product image"
+                      className="w-[100px]"
+                    />
+                    <div>
+                      <p className="text-sm text-deepGray font-semibold ">
+                        Dreen Apple{" "}
+                      </p>
+                      <p className="text-lightGray text-sm">
+                        1kg x{" "}
+                        <span className="text-deepGray font-bold">12</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <IoIosCloseCircleOutline className="cursor-pointer" />
+                </div>
+                ))}
+
+
+                <div className="mt-auto ">
+                  <div className="flex justify-between text-deepGray text-sm">
+                    <p className="font-medium">2 products </p>
+                    <p className="font-bold">$26.28</p>
+                  </div>
+
+                  <div className="space-y-2 my-3">
+                  <CustomBtn label="Checkout" />
+                  <CustomBtn label="Go to Cart" className="bg-gray-200 btn w-[100%] rounded-full hover:bg-gray-200  text-success" />
+
+                  </div>
+                </div>
+              </Drawer>
             </div>
           </div>
 
@@ -182,9 +268,6 @@ const AppHeader = () => {
             </div>
           </div>
         </div>
-
-
-
       )}
     </div>
   );
