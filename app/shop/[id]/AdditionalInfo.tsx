@@ -1,6 +1,10 @@
 import React from "react";
 
-const AdditionalInfo = () => {
+
+interface Props {
+    src: string;
+  }
+const AdditionalInfo = ({src}:Props) => {
   
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 px-5 md:px-24">
@@ -22,7 +26,10 @@ const AdditionalInfo = () => {
         category: <span className="text-lightGray">salad</span>
         </p>
       </div>
-      <div className="">Youtube Video </div>
+      <div className=""> <iframe
+          className="lg:w-full lg:min-h-96"
+          src={src}
+        ></iframe>{" "} </div>
     </div>
   );
 };
