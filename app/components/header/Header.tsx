@@ -206,8 +206,8 @@ const AppHeader = () => {
                 </div>
                 <Divider />
                 {cartData.map((item,i:number) => (
-                  <div className="flex items-center justify-between">
-                    <div key={i} className="my-2 flex space-x-3 items-center">
+                  <div key={i} className="flex items-center justify-between">
+                    <div  className="my-2 flex space-x-3 items-center">
                       <Image
                         src={item.img}
                         alt="product image"
