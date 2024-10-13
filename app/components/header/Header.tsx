@@ -29,27 +29,25 @@ interface navProps {
 
 const AppHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [openCart, setOpenCart] = useState(true);
+  const [openCart, setOpenCart] = useState(false);
   const isMobile = useCheckIsMobile();
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };
 
-
   const cartData = [
     {
-      img:product,
-      name:'Green Apple ',
-      units:10
+      img: product,
+      name: "Green Apple ",
+      units: 10,
     },
     {
-      img:product,
-      name:'Green Apple ',
-      units:10
+      img: product,
+      name: "Green Apple ",
+      units: 10,
     },
-    
-  ]
+  ];
 
   const navItem: navProps[] = [
     {
@@ -207,30 +205,28 @@ const AppHeader = () => {
                   />
                 </div>
                 <Divider />
-                {cartData.map((item)=>(
-
-                <div className="flex items-center justify-between">
-                  <div className="my-2 flex space-x-3 items-center">
-                    <Image
-                      src={product}
-                      alt="product image"
-                      className="w-[100px]"
-                    />
-                    <div>
-                      <p className="text-sm text-deepGray font-semibold ">
-                        Dreen Apple{" "}
-                      </p>
-                      <p className="text-lightGray text-sm">
-                        1kg x{" "}
-                        <span className="text-deepGray font-bold">12</span>
-                      </p>
+                {cartData.map((item,i:number) => (
+                  <div key={i} className="flex items-center justify-between">
+                    <div  className="my-2 flex space-x-3 items-center">
+                      <Image
+                        src={item.img}
+                        alt="product image"
+                        className="w-[100px]"
+                      />
+                      <div>
+                        <p className="text-sm text-deepGray font-semibold ">
+                          Green Apple{" "}
+                        </p>
+                        <p className="text-lightGray text-sm">
+                          1kg x{" "}
+                          <span className="text-deepGray font-bold">12</span>
+                        </p>
+                      </div>
                     </div>
+
+                    <IoIosCloseCircleOutline className="cursor-pointer" />
                   </div>
-
-                  <IoIosCloseCircleOutline className="cursor-pointer" />
-                </div>
                 ))}
-
 
                 <div className="mt-auto ">
                   <div className="flex justify-between text-deepGray text-sm">
@@ -239,9 +235,14 @@ const AppHeader = () => {
                   </div>
 
                   <div className="space-y-2 my-3">
-                  <CustomBtn label="Checkout" />
-                  <CustomBtn label="Go to Cart" className="bg-gray-200 btn w-[100%] rounded-full hover:bg-gray-200  text-success" />
-
+                    <CustomBtn label="Checkout" />
+                    <Link
+                      href={"/cart"}
+                      className="bg-gray-200 btn w-[100%] rounded-full hover:bg-gray-200  text-success"
+                    onClick={()=>{setOpenCart(false)}}
+                    >
+                      Go to Cart
+                    </Link>
                   </div>
                 </div>
               </Drawer>
