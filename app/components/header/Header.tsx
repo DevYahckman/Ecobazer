@@ -205,17 +205,17 @@ const AppHeader = () => {
                   />
                 </div>
                 <Divider />
-                {cartData.map((item) => (
+                {cartData.map((item,i:number) => (
                   <div className="flex items-center justify-between">
-                    <div className="my-2 flex space-x-3 items-center">
+                    <div key={i} className="my-2 flex space-x-3 items-center">
                       <Image
-                        src={product}
+                        src={item.img}
                         alt="product image"
                         className="w-[100px]"
                       />
                       <div>
                         <p className="text-sm text-deepGray font-semibold ">
-                          Dreen Apple{" "}
+                          Green Apple{" "}
                         </p>
                         <p className="text-lightGray text-sm">
                           1kg x{" "}
