@@ -19,6 +19,7 @@ import "react-modern-drawer/dist/index.css";
 import product from "@/app/assets/images/productOne.png";
 import { Divider } from "antd";
 import CustomBtn from "../button/CustomBtn";
+import { useRouter } from "next/navigation";
 
 interface navProps {
   name: string;
@@ -31,9 +32,15 @@ const AppHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const isMobile = useCheckIsMobile();
+  const route = useRouter();
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
+  };
+
+  const handleOpenCart = () => {
+    route.push("/checkout");
+    setOpenCart(!openCart);
   };
 
   const cartData = [
@@ -205,9 +212,9 @@ const AppHeader = () => {
                   />
                 </div>
                 <Divider />
-                {cartData.map((item,i:number) => (
+                {cartData.map((item, i: number) => (
                   <div key={i} className="flex items-center justify-between">
-                    <div  className="my-2 flex space-x-3 items-center">
+                    <div className="my-2 flex space-x-3 items-center">
                       <Image
                         src={item.img}
                         alt="product image"
@@ -235,11 +242,13 @@ const AppHeader = () => {
                   </div>
 
                   <div className="space-y-2 my-3">
-                    <CustomBtn label="Checkout" />
+                    <CustomBtn label="Checkout" onClick={handleOpenCart} />
                     <Link
                       href={"/cart"}
                       className="bg-gray-200 btn w-[100%] rounded-full hover:bg-gray-200  text-success"
-                    onClick={()=>{setOpenCart(false)}}
+                      onClick={() => {
+                        setOpenCart(false);
+                      }}
                     >
                       Go to Cart
                     </Link>

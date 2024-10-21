@@ -63,22 +63,26 @@ const Shop = () => {
         <div className="md:flex space-y-3 justify-between items-center py-4">
           <div className="flex items-center space-x-5">
             <CustomSelects
+            className="md:w-40 w-24"
               options={categoryOption}
               placholder="Select Category"
               value={selectCategories}
               onChange={handleCategory}
             />
             <CustomSelects
+            className="md:w-40 w-24"
               options={priceOption}
               placholder="Select Price"
               value={selectedPrice.join('-')}
               onChange={handlePrice}
             />
-            <CustomSelects options={verdictOption} placholder="Select Rating" />
+            <CustomSelects
+            className="md:w-40 w-24" options={verdictOption} placholder="Select Rating" />
           </div>
 
           <div className="flex items-center space-x-5 ">
             <CustomSelects
+            className="md:w-40 w-24"
               options={verdictOption}
               placholder="Sortby: Latest"
             />

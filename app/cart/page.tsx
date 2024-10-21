@@ -7,14 +7,16 @@ import CustomInputNumber from "../components/customsInputNumber/CustomInputNumbe
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import Image, { StaticImageData } from "next/image";
 import CustomBtn from "../components/button/CustomBtn";
+import { useRouter } from "next/navigation";
 
 interface ICart {
   product: { img: StaticImageData; name: string };
   price: { price: number };
   quantity: React.ReactNode;
-  subtotal: { price: number; icon:  React.ReactNode };
+  subtotal: { price: number; icon: React.ReactNode };
 }
 const Cart = () => {
+  const route = useRouter();
   const checkoutData = {
     price: 84.5,
     shipping: "Free",
@@ -105,7 +107,9 @@ const Cart = () => {
             <Table
               dataSource={data}
               columns={columns}
-              pagination={{ position: ["bottomCenter"] }}
+              pagination={
+                data.length >= 10 ? { position: ["bottomCenter"] } : false
+              }
             />
           </div>
           <div>
@@ -125,7 +129,13 @@ const Cart = () => {
                 <span className="text-deepGray">{checkoutData.Total}</span>
               </p>
 
-              <CustomBtn label="Proceed to checkout" />
+              <CustomBtn
+                label="Proceed to checkout"
+            
+                onClick={() => {
+                  route.push("/checkout");
+                }}
+              />
             </div>
           </div>
         </div>
