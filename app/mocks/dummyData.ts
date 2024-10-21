@@ -151,41 +151,41 @@ export const topCategory: ITopCategory[] = [
     category: "vegetable",
     units: 127,
   },
-  {
-    img: meat,
-    category: "vegetable",
-    units: 127,
-  },
-  {
-    img: meat,
-    category: "vegetable",
-    units: 127,
-  },
-  {
-    img: meat,
-    category: "vegetable",
-    units: 127,
-  },
-  {
-    img: meat,
-    category: "vegetable",
-    units: 127,
-  },
-  {
-    img: meat,
-    category: "vegetable",
-    units: 127,
-  },
-  {
-    img: meat,
-    category: "vegetable",
-    units: 127,
-  },
-  {
-    img: meat,
-    category: "vegetable",
-    units: 127,
-  },
+  // {
+  //   img: meat,
+  //   category: "vegetable",
+  //   units: 127,
+  // },
+  // {
+  //   img: meat,
+  //   category: "vegetable",
+  //   units: 127,
+  // },
+  // {
+  //   img: meat,
+  //   category: "vegetable",
+  //   units: 127,
+  // },
+  // {
+  //   img: meat,
+  //   category: "vegetable",
+  //   units: 127,
+  // },
+  // {
+  //   img: meat,
+  //   category: "vegetable",
+  //   units: 127,
+  // },
+  // {
+  //   img: meat,
+  //   category: "vegetable",
+  //   units: 127,
+  // },
+  // {
+  //   img: meat,
+  //   category: "vegetable",
+  //   units: 127,
+  // },
 ];
 
 export const customerReview: ICustomerReview[] = [

@@ -203,7 +203,9 @@ const Checkout = () => {
           </div>
           <div className="">
             <div className="border border-gray-200 rounded-lg p-5 min-h-7">
-              <p className="text-deepGray text-xl font-medium">Order Summary</p>
+              <p className="text-deepGray text-xl font-medium pb-5">
+                Order Summary
+              </p>
               {orderSummaryData.map((item, i: number) => (
                 <div className="flex justify-between items-center" key={i}>
                   <div className="flex space-x-2 items-center">
