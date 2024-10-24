@@ -21,7 +21,7 @@ const Blogs = () => {
         {/* Blog Side Nav */}
         <BlogSide />
 
-        <div className="col-span-3">
+        <div className="col-span-3 overflow-y-scroll max-h-[140vh] scrollbar-hide">
           <div className="flex items-center justify-between">
             <CustomSelects placholder="Sort-by" className="w-40" />
             <p className="text-lightGray text-sm">

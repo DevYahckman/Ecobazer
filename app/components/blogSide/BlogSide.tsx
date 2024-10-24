@@ -40,7 +40,7 @@ const BlogSide = () => {
   ];
   return (
     <div>
-        <div className="overflow-y-scroll max-h-screen scrollbar-hide hidden md:block ">
+        <div className=" scrollbar-hide hidden md:block ">
           <Button
             type="primary"
             icon={<BsFilter />}
