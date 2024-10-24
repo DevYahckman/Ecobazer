@@ -59,7 +59,7 @@ const AppHeader = () => {
   const navItem: navProps[] = [
     {
       name: "Home",
-      path: "#",
+      path: "/",
       icon: <FaHome size={19} />,
     },
     {
@@ -70,7 +70,7 @@ const AppHeader = () => {
 
     {
       name: "Blog",
-      path: "#",
+      path: "/blog",
       icon: <FaBloggerB size={19} />,
     },
     {

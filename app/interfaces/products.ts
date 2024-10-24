@@ -28,3 +28,13 @@ export interface ICustomerReview {
   review: string;
   rating?: number;
 }
+
+export interface IBlogs {
+  img: {src:string};
+  topic: string;
+  title: string;
+  blog: string;
+  link:string
+  day:number
+  month:string
+}

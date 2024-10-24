@@ -26,11 +26,14 @@ body {
   }
 }
 
-.header{
+.header {
   text-align: center;
   color: #1a1a1a;
   font-weight: 600;
   font-size: 30px;
 }
 
-
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
