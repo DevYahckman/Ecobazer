@@ -69,13 +69,13 @@ const AppHeader = () => {
     },
 
     {
-      name: "Blog",
+      name: "Blogs",
       path: "/blog",
       icon: <FaBloggerB size={19} />,
     },
     {
       name: "About Us",
-      path: "#",
+      path: "/about",
       icon: <FaInfoCircle size={19} />,
     },
     {
