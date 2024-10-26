@@ -21,7 +21,7 @@ const Blogs = () => {
         {/* Blog Side Nav */}
         <BlogSide />
 
-        <div className="col-span-3">
+        <div className="col-span-3 overflow-y-scroll max-h-[140vh] scrollbar-hide">
           <div className="flex items-center justify-between">
             <CustomSelects placholder="Sort-by" className="w-40" />
             <p className="text-lightGray text-sm">
@@ -45,24 +45,28 @@ const Blogs = () => {
 
                   <div className="mt-auto px-10 py-9 ">
                     <p className="bg-white text-center px-6 py-3 rounded-md font-medium shadow-sm ">
-                      <span className="block text-deepGray text-xl ">{item.day}</span>
-                      <span className="uppercase text-gray-500 text-xs ">{item.month}</span>
+                      <span className="block text-deepGray text-xl ">
+                        {item.day}
+                      </span>
+                      <span className="uppercase text-gray-500 text-xs ">
+                        {item.month}
+                      </span>
                     </p>
                   </div>
                 </div>
                 <div className="py-4 px-4">
-                  <div className="flex space-x-9 items-center">
+                  <div className="flex space-x-9 items-center ">
                     <div className="flex space-x-2 items-center">
-                      <BsTag className="text-gray-400" size={18} />
-                      <p className="text-gray-700 text-base">Food</p>
+                      <BsTag className="text-gray-400" size={15} />
+                      <p className="text-gray-700 text-sm">Food</p>
                     </div>
                     <div className="flex space-x-2 items-center">
-                      <FaRegUser className="text-gray-400" size={18} />
-                      <p className="text-gray-700 text-base">By Admin</p>
+                      <FaRegUser className="text-gray-400" size={15} />
+                      <p className="text-gray-700 text-sm">By Admin</p>
                     </div>
                     <div className="flex space-x-2 items-center">
-                      <FaRegMessage className="text-gray-400" size={18} />
-                      <p className="text-gray-700 text-base">65 Comments</p>
+                      <FaRegMessage className="text-gray-400" size={15} />
+                      <p className="text-gray-700 text-sm">65 Comments</p>
                     </div>
                   </div>
 

@@ -37,3 +37,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.linear-gradient{
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0.223));
+}

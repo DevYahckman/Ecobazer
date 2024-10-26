@@ -12,7 +12,7 @@ interface Props {
   error?: string | undefined;
   touched?: boolean;
   label?: string;
-  name?:string
+  name?: string;
 }
 
 const CustomInput = ({
@@ -26,7 +26,7 @@ const CustomInput = ({
   touched,
   label,
   onBlur,
-  name
+  name,
 }: Props) => {
   return (
     <div className="mb-4">
@@ -45,7 +45,6 @@ const CustomInput = ({
         disabled={disabled}
         onBlur={onBlur}
         name={name}
-        
       />
       {touched && error && <p className="text-sm text-red-500">{error}</p>}
     </div>
