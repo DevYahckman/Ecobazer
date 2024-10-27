@@ -7,10 +7,11 @@ const { TextArea } = Input;
 interface Props{
     placeholder?:string
     label?:string
+    value?:string
 }
 
 
-const CustomTextArea = ({placeholder,label}:Props) => {
+const CustomTextArea = ({placeholder,label, value}:Props) => {
   return (
     <div>
          {label && (
@@ -18,7 +19,7 @@ const CustomTextArea = ({placeholder,label}:Props) => {
           {label}
         </label>
       )}
-          <TextArea rows={4} placeholder={placeholder} />
+          <TextArea value={value} rows={4} placeholder={placeholder} />
     </div>
   )
 }
