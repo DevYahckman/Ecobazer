@@ -16,10 +16,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaFacebookF, FaXTwitter } from "react-icons/fa6";
 import { TiSocialPinterest } from "react-icons/ti";
 
-
 import ShopBtn from "../components/button/ShopBtn";
 import Link from "next/link";
-
 
 const AboutUs = () => {
   const aboutUs = [
