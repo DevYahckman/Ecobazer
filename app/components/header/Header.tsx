@@ -80,7 +80,7 @@ const AppHeader = () => {
     },
     {
       name: "Contact Us",
-      path: "#",
+      path: "/contact",
       icon: <FaMapLocationDot size={19} />,
     },
   ];
@@ -148,9 +148,9 @@ const AppHeader = () => {
               <span>|</span>
               <Link href={"#"}>NGN </Link>
               <span>|</span>
-              <Link href={"#"}>SignUp </Link>
+              <Link href={"/register"}>SignUp </Link>
               <span>|</span>
-              <Link href={"#"}>Signin </Link>
+              <Link href={"/login"}>Signin </Link>
             </div>
           </div>
           {/* Mid */}

@@ -4,7 +4,10 @@ import about1 from "@/app/assets/images/about1.png";
 import about2 from "@/app/assets/images/about2.png";
 import about3 from "@/app/assets/images/about3.png";
 import about2_bg from "@/app/assets/images/about2_BG.png";
-import team from "@/app/assets/images/team2.png";
+import team1 from "@/app/assets/images/team1.png";
+import team2 from "@/app/assets/images/team2.png";
+import team3 from "@/app/assets/images/team3.png";
+import team4 from "@/app/assets/images/team4.png";
 import Image from "next/image";
 import { BiLeaf } from "react-icons/bi";
 import { FaHeadphonesAlt, FaShippingFast } from "react-icons/fa";
@@ -60,7 +63,7 @@ const AboutUs = () => {
 
   const teams = [
     {
-      img: team,
+      img: team1,
       name: "John Doe",
       position: "CEO",
       socials: [
@@ -83,7 +86,7 @@ const AboutUs = () => {
       ],
     },
     {
-      img: team,
+      img: team2,
       name: "John Doe",
       position: "Farmer",
       socials: [
@@ -106,7 +109,7 @@ const AboutUs = () => {
       ],
     },
     {
-      img: team,
+      img: team3,
       name: "John Doe",
       position: "Secutity Guard",
       socials: [
@@ -129,7 +132,7 @@ const AboutUs = () => {
       ],
     },
     {
-      img: team,
+      img: team4,
       name: "John Doe",
       position: "Senior Farmer Manager",
       socials: [
@@ -194,7 +197,7 @@ const AboutUs = () => {
             <div className="grid md:grid-cols-2 gap-7 py-4">
               {services.map((item, i) => (
                 <div className="flex items-center space-x-3" key={i}>
-                  <div className="text-success bg-gray-200 w-fit p-3 rounded-full font-thin">
+                  <div className="text-success bg-gray-200 w-fit p-3 rounded-full font-thin hi">
                     {item.icon}
                   </div>
 
@@ -250,18 +253,21 @@ const AboutUs = () => {
             {teams.map((Item, i: number) => (
               <div className="hover:shadow-xl border rounded-xl " key={i}>
                 <div
-                  className="h-[280px] rounded-md bg-cover bg-center   flex justify-center items-center space-x-5 group "
+                  className="h-[280px] rounded-md bg-cover bg-center flex justify-center items-center space-x-5 group "
                   style={{ backgroundImage: `url(${Item.img.src})` }}
                 >
+                  <div className="py-28 w-full flex justify-center space-x-5 group-hover:bg-[#00000080] z-30">
                   {Item.socials.map((item, i: number) => (
+
                     <Link
                       key={i}
                       href={item.link}
                       className="hover:bg-success  text-white hover:p-1 rounded-full hidden group-hover:flex"
-                    >
+                      >
                       {item.icon}
                     </Link>
                   ))}
+                  </div>
                 </div>
                 <div className="px-5 py-2">
                   <p className="text-deepGray font-semibold text-lg">

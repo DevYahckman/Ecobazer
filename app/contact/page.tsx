@@ -12,8 +12,8 @@ const ContactUs = () => {
   return (
     <div>
       <BreadCrumb />
-      <div className="grid grid-cols-4 gap-4 px-10 py-10">
-        <div className="shadow-xl p-10 rounded-md">
+      <div className="grid md:grid-cols-4 md:gap-4 p-5 md:p-10 ">
+        <div className=" shadow-md md:shadow-xl p-10 rounded-md">
           <div className="flex justify-center items-center flex-col">
             <CiLocationOn className="text-success" size={50} />
             <p className="text-center text-base text-gray-800">
@@ -38,16 +38,16 @@ const ContactUs = () => {
           </div>
         </div>
 
-        <div className="col-span-3 shadow-xl p-10 rounded-md">
+        <div className="md:col-span-3 shadow-md md:shadow-xl p-5 md:p-10 rounded-md">
           <p className="text-deepGray font-semibold text-2xl">Just Say Hello</p>
-          <p className="w-[50%] leading-8 py-2 pb-5">
+          <p className="md:w-[50%] leading-8 py-2 pb-5">
             Do you fancy saying hi to me or you want to get started with your
             project and you need my help? Feel free to contact me.
           </p>
 
           <section className="space-y-6">
-            <div className="grid gap-5 grid-cols-2">
-              <CustomInput placeholder="Template Cookies" />
+            <div className="grid gap-5 md:grid-cols-2">
+              <CustomInput placeholder="Fullname" />
               <CustomInput placeholder="jones@gmail.com" type="email" />
             </div>
             <CustomInput placeholder=" " value="Hello" />
