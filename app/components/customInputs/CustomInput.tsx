@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Input } from "antd";
 
@@ -35,17 +36,31 @@ const CustomInput = ({
           {label}
         </label>
       )}
-      <Input
-        placeholder={placeholder}
-        size="large"
-        onChange={onChange}
-        onClear={onClear}
-        value={value}
-        type={type || "text"}
-        disabled={disabled}
-        onBlur={onBlur}
-        name={name}
-      />
+      {type === "password" ? (
+        <Input.Password
+          placeholder="input password"
+          size="large"
+          onChange={onChange}
+          onClear={onClear}
+          value={value}
+          type={type || "text"}
+          disabled={disabled}
+          onBlur={onBlur}
+          name={name}
+        />
+      ) : (
+        <Input
+          placeholder={placeholder}
+          size="large"
+          onChange={onChange}
+          onClear={onClear}
+          value={value}
+          type={type || "text"}
+          disabled={disabled}
+          onBlur={onBlur}
+          name={name}
+        />
+      )}
       {touched && error && <p className="text-sm text-red-500">{error}</p>}
     </div>
   );
