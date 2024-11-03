@@ -1,6 +1,6 @@
 import React from "react";
 
-const role = "user";
+// const role = "user";
 
 interface Props {
   children: React.ReactNode;
@@ -9,9 +9,7 @@ interface Props {
 const Dashboard = ({ children }: Props) => {
   return (
     <div>
-      <aside>
-        
-      </aside>
+      <aside></aside>
       <div>{children}</div>
     </div>
   );

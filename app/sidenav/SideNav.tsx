@@ -15,17 +15,17 @@ const userNav = [
   {
     label: "Order History",
     icon: <RiHistoryLine size={18} />,
-    path: "/dashboard",
+    path: "/dashboard/user/orderHistory",
   },
   {
     label: "Shopping Cart",
     icon: <GiShoppingCart size={18} />,
-    path: "/dashboard",
+    path: "/cart",
   },
   {
     label: "Setting",
     icon: <IoIosSettings size={18} />,
-    path: "/dashboard",
+    path: "/dashboard/user/setting",
   },
   {
     label: "Logout",
@@ -68,15 +68,20 @@ const SideNav = () => {
   const navItems = roleType === "user" ? userNav : adminNav;
   return (
     
-    <div className="w-64 border rounded-lg shadow-sm py-5 space-y-4 max-h-screen">
+    <div className=" hidden md:block w-64 border rounded-lg shadow-sm py-5 space-y-4 max-h-screen h-fit">
       <p className="font-medium text-deepGray text-lg px-5">Navigation</p>
 
-      {navItems.map((item, i: number) => (
+      {navItems.map((item:any, i: number) => (
         <div
           key={i}
+      
           onClick={() => {
-            setSelectedPath(i === selectedPath ? null : i);
+            // Only update selected path if it's different from current
+            if (selectedPath !== i) {
+              setSelectedPath(i);
+            }
           }}
+      
           className={`text-gray-600  text-base 
             ${
               selectedPath === i
