@@ -1,5 +1,5 @@
 "use client";
-export const columns: any = [
+export const columns = [
   {
     title: "OrerID",
     dataIndex: "OrerID",

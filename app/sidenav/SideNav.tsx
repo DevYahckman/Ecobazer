@@ -71,7 +71,7 @@ const SideNav = () => {
     <div className=" hidden md:block w-64 border rounded-lg shadow-sm py-5 space-y-4 max-h-screen h-fit">
       <p className="font-medium text-deepGray text-lg px-5">Navigation</p>
 
-      {navItems.map((item:any, i: number) => (
+      {navItems.map((item, i: number) => (
         <div
           key={i}
       

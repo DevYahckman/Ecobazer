@@ -1,10 +1,7 @@
-import Image from "next/image";
+
 import React from "react";
-import user from "@/app/assets/images/team2.png";
 import Link from "next/link";
-import { ConfigProvider, Table } from "antd";
-import useOrderHistory from "../../useOrderHistory";
-import { columns } from "../../../user/columns";
+import { ConfigProvider } from "antd";
 import { BsDot } from "react-icons/bs";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { Steps } from "antd";
