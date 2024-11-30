@@ -123,6 +123,7 @@ const AppHeader = () => {
                     className="flex items-center space-x-5 my-5"
                     onClick={() => {
                       setIsOpen(false);
+                      route.push(item.path)
                     }}
                   >
                     <span className="">{item.icon}</span>
