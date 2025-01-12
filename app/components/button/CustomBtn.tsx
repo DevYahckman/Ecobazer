@@ -13,6 +13,7 @@ const CustomBtn = ({ type, className, label, onClick }: Props) => {
   return (
     <div>
       <button
+
         type={type || "submit"}
         className={
           className ||

@@ -20,6 +20,15 @@ import product from "@/app/assets/images/productOne.png";
 import { Divider } from "antd";
 import CustomBtn from "../button/CustomBtn";
 import { useRouter } from "next/navigation";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { Spin, Avatar, Badge } from "antd";
+import { DownOutlined, SmileOutlined } from "@ant-design/icons";
+import type { MenuProps } from "antd";
+import { Dropdown, Space } from "antd";
+import { FaRegUserCircle } from "react-icons/fa";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { IoSettingsSharp } from "react-icons/io5";
+import { RiLogoutBoxLine } from "react-icons/ri";
 
 interface navProps {
   name: string;
@@ -32,7 +41,51 @@ const AppHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const isMobile = useCheckIsMobile();
+  const { status, data: session } = useSession();
   const route = useRouter();
+
+  const items: MenuProps["items"] = [
+    {
+      key: "1",
+      label: <Link href={"/dashboard"}>Profile</Link>,
+      icon: <FaRegUserCircle />,
+    },
+    {
+      key: "2",
+      label: <Link href={"/dashboard"}>Notifications</Link>,
+      icon: <IoMdNotificationsOutline />,
+    },
+    {
+      key: "3",
+      label: <Link href={"/dashboard/user/setting"}>Setting</Link>,
+      icon: <IoSettingsSharp />,
+    },
+    
+    {
+      key: "4",
+      danger: true,
+      label: < Link href={'/api/auth/signout'}>"Logout"</Link> ,
+      icon: <RiLogoutBoxLine />,
+    },
+  ];
+
+  // drop down func
+  const DropingDown = () => {
+    return (
+      <Dropdown menu={{ items }}>
+        <a onClick={(e) => e.preventDefault()}>
+          <Space>
+            {/* <p>{session && session.user?.name}</p> */}
+            <Avatar
+              src={<Image src={userImage} alt="user Image" />}
+              size={50}
+              className=" cursor-pointer"
+            />
+          </Space>
+        </a>
+      </Dropdown>
+    );
+  };
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
@@ -84,6 +137,9 @@ const AppHeader = () => {
       icon: <FaMapLocationDot size={19} />,
     },
   ];
+
+  console.log(session, "data");
+
   return (
     <div className="">
       {isMobile ? (
@@ -123,7 +179,7 @@ const AppHeader = () => {
                     className="flex items-center space-x-5 my-5"
                     onClick={() => {
                       setIsOpen(false);
-                      route.push(item.path)
+                      route.push(item.path);
                     }}
                   >
                     <span className="">{item.icon}</span>
@@ -137,8 +193,10 @@ const AppHeader = () => {
           </div>
         </div>
       ) : (
+        // Desktop Screen
         <div>
           {/* Top */}
+
           <div className=" hidden lg:flex justify-between  items-center  bg-deepGray px-7 py-2 text-gray-300 text-xs">
             <div className="flex items-center space-x-2 ">
               <SlLocationPin size={18} />
@@ -149,11 +207,22 @@ const AppHeader = () => {
               <span>|</span>
               <Link href={"#"}>NGN </Link>
               <span>|</span>
-              <Link href={"/register"}>SignUp </Link>
-              <span>|</span>
-              <Link href={"/login"}>Signin </Link>
+              {status !== "authenticated" && (
+                <>
+                  <Link href={"/register"}>SignUp </Link>
+                  <span>|</span>
+                  <Link href={"/login"}>Signin </Link>
+                </>
+              )}
+              {status === "loading" && (
+                <div className="text-red-800">
+                  <Spin />
+                  Loading
+                </div>
+              )}
             </div>
           </div>
+
           {/* Mid */}
           <div className="flex justify-between items-center px-7 py-4">
             <div className="flex space-x-3 items-center">
@@ -178,22 +247,34 @@ const AppHeader = () => {
               </div>
               <span>|</span>
               <div className="flex items-center space-x-4">
-                <HiOutlineShoppingBag
-                  size={30}
-                  onClick={() => {
-                    setOpenCart(!openCart);
-                  }}
-                />
+                <Badge count={5}>
+                  <HiOutlineShoppingBag
+                    size={30}
+                    onClick={() => {
+                      setOpenCart(!openCart);
+                    }}
+                  />
+                </Badge>
                 <div>
                   <div className="text-sx text-lightGray">
                     Shopping Cart:
-                    <p className="absolute top-[55px] right-[170px] bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                    {/* <p className="absolute top-[55px] right-[170px] bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
                       5
-                    </p>
+                    </p> */}
                   </div>
                   <p className=" text-sm text-deepGray font-bold ">$57.00</p>
                 </div>
               </div>
+              {status === "authenticated" && (
+                <>
+                  <span>|</span>
+                  <div>
+                    <p>
+                      <DropingDown />
+                    </p>
+                  </div>
+                </>
+              )}
               {/* Cart Modal */}
 
               <Drawer
