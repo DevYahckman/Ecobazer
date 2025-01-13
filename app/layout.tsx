@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import AppHeader from "./components/header/Header";
+
+
+
 import "@splidejs/react-splide/css";
 import "@splidejs/react-splide/css";
 
