@@ -9,32 +9,48 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook, FaSquareInstagram } from "react-icons/fa6";
 import { useFormik } from "formik";
 import { validateUserLogin } from "../validation/user";
+import http from "../services/httpSetvice";
+import config from "../../config.json";
+import Swal from "sweetalert2";
+
+
+
 
 const Login = () => {
   const router = useRouter();
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     email: "",
-  //     password: "",
-  //   },
-  //   validationSchema: validateUserLogin(),
-  //   onSubmit: (values: any) => {
-  //     console.log(values);
-  //   },
-  // });
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: validateUserLogin(),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        
+        const { data: jwt } = await http.post(`${config.apiUrl}/auth`, values);
+        console.log(jwt);
+        localStorage.setItem("token", jwt);
+  
+        window.location.href = '/'
+
+      } catch (error:any) {
+        console.log(error, 'error');
+        const errorMessage = error?.response?.data?.message || "An unexpected error occurred.";
+        
+        formik.errors.email = errorMessage
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text:errorMessage,
+       
+        });
+        
+      }
+
+
     },
   });
-
-
 
   return (
     <div className="flex justify-center items-center min-h-[70vh] py-5 p-5">
