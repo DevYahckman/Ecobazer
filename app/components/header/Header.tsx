@@ -76,6 +76,9 @@ const AppHeader = () => {
   ];
 
   const cartItems = useCartStore((state: any) => state.cartItems);
+  const removeFromCart = useCartStore((state: any) => state.removeFromCart);
+  const subtotal = cartItems.reduce((total:any, item:any) => total + item.price, 0)
+
   console.log(cartItems);
   
   // drop down func
@@ -308,7 +311,7 @@ const AppHeader = () => {
                   />
                 </div>
                 <Divider />
-                {cartData.map((item, i: number) => (
+                {cartItems.map((item:any, i: number) => (
                   <div key={i} className="flex items-center justify-between">
                     <div className="my-2 flex space-x-3 items-center">
                       <Image
@@ -318,7 +321,7 @@ const AppHeader = () => {
                       />
                       <div>
                         <p className="text-sm text-deepGray font-semibold ">
-                          Green Apple{" "}
+                         {item.productName}{" "}
                         </p>
                         <p className="text-lightGray text-sm">
                           1kg x{" "}
@@ -327,14 +330,14 @@ const AppHeader = () => {
                       </div>
                     </div>
 
-                    <IoIosCloseCircleOutline className="cursor-pointer" />
+                    <IoIosCloseCircleOutline className="cursor-pointer" onClick={()=> removeFromCart(item.id)} />
                   </div>
                 ))}
 
                 <div className="mt-auto ">
                   <div className="flex justify-between text-deepGray text-sm">
-                    <p className="font-medium">2 products </p>
-                    <p className="font-bold">$26.28</p>
+                    <p className="font-medium">{cartItems.length} products </p>
+                    <p className="font-bold">${subtotal}</p>
                   </div>
 
                   <div className="space-y-2 my-3">
@@ -344,6 +347,7 @@ const AppHeader = () => {
                       className="bg-gray-200 btn w-[100%] rounded-full hover:bg-gray-200  text-success"
                       onClick={() => {
                         setOpenCart(false);
+                        
                       }}
                     >
                       Go to Cart
