@@ -13,8 +13,11 @@ import { Divider } from "antd";
 import StarRatings from "../rating/StarRatings";
 import CustomModal from "../Modals/CustomModal";
 import CustomInputNumber from "../customsInputNumber/CustomInputNumber";
+import { useCartStore } from "@/app/store/cartStore";
+import Link from "next/link";
 
 interface Props {
+  id: number;
   img: StaticImageData;
   productName?: string;
   price?: number;
@@ -23,6 +26,7 @@ interface Props {
   category?: string;
 }
 const ProductCard = ({
+  id,
   img,
   productName,
   price,
@@ -36,6 +40,11 @@ const ProductCard = ({
     setLike(!like);
   };
 
+  const addToCart = useCartStore((state: any) => state.addToCart);
+  const cartItems = useCartStore((state: any) => state.cartItems);
+
+  console.log(cartItems);
+
   const [openModal, setOpenModal] = useState(false);
   const closeModal = () => {
     setOpenModal(false);
@@ -44,6 +53,8 @@ const ProductCard = ({
   return (
     <div>
       {" "}
+        <Link href='/cart'>Cart</Link>
+
       <div className="bg-[#f7fafc] rounded-lg min-h-28 shadow  hover:cursor-pointer hover:shadow-xl hover:border mt-5 md:mt-0 hover:border-gray-600 transition duration-700 group">
         <div className="relative">
           <Image
@@ -127,7 +138,20 @@ const ProductCard = ({
                   <CustomInputNumber />
                 </div>
                 <div className="flex-grow">
-                  <button className="btn hover:bg-success rounded-md flex-2 bg-success text-white font-semibold p-4 py-2 w-[100%]">
+                  <button
+                    onClick={() => {
+                      addToCart({
+                        id,
+                        productName,
+                        price,
+                        img,
+                        units,
+                        description,
+                        category,
+                      });
+                    }}
+                    className="btn hover:bg-success rounded-md flex-2 bg-success text-white font-semibold p-4 py-2 w-[100%]"
+                  >
                     Add to Cart
                   </button>
                 </div>
@@ -149,6 +173,7 @@ const ProductCard = ({
             </div>
           </div>
         </CustomModal>
+
 
         <div className="flex items-center justify-between my-5 mx-3 ">
           <div>

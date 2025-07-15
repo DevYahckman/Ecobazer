@@ -55,6 +55,7 @@ const useFilterGoods = () => {
     handlePrice,
     selectedPrice,
     priceOption,
+    productData,
   };
 };
 

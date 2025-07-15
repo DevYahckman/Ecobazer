@@ -1,6 +1,7 @@
 import { StaticImageData } from "next/image";
 
 export interface IProducts {
+  id:number;
   img: StaticImageData;
   productName: string;
   price: number;
@@ -14,6 +15,7 @@ export interface IProducts {
     type?: string;
     status?: "Available";
   };
+  // products?: IProducts[];
 }
 
 export interface ITopCategory {

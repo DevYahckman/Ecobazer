@@ -12,12 +12,14 @@ import { validateUserLogin } from "../validation/user";
 import http from "../services/httpSetvice";
 import config from "../../config.json";
 import Swal from "sweetalert2";
-
-
-
+import { useUserStore } from "../store/userStore";
 
 const Login = () => {
   const router = useRouter();
+  const setUser = useUserStore((state: any) => state.setUser);
+  const isLoggedIn = useUserStore((state: any) => state.isLoggedIn);
+
+  console.log(isLoggedIn, 'logged in');
 
   const formik = useFormik({
     initialValues: {
@@ -27,28 +29,24 @@ const Login = () => {
     validationSchema: validateUserLogin(),
     onSubmit: async (values) => {
       try {
-        
         const { data: jwt } = await http.post(`${config.apiUrl}/auth`, values);
+        setUser(jwt);
         console.log(jwt);
         localStorage.setItem("token", jwt);
-  
-        window.location.href = '/'
 
-      } catch (error:any) {
-        console.log(error, 'error');
-        const errorMessage = error?.response?.data?.message || "An unexpected error occurred.";
-        
-        formik.errors.email = errorMessage
+        window.location.href = "/";
+      } catch (error: any) {
+        console.log(error, "error");
+        const errorMessage =
+          error?.response?.data?.message || "An unexpected error occurred.";
+
+        formik.errors.email = errorMessage;
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text:errorMessage,
-       
+          text: errorMessage,
         });
-        
       }
-
-
     },
   });
 

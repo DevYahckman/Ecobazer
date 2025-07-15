@@ -29,6 +29,9 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { IoSettingsSharp } from "react-icons/io5";
 import { RiLogoutBoxLine } from "react-icons/ri";
+import { useUserStore } from "@/app/store/userStore";
+import { useCartStore } from "@/app/store/cartStore";
+
 
 interface navProps {
   name: string;
@@ -43,6 +46,9 @@ const AppHeader = () => {
   const isMobile = useCheckIsMobile();
   const { status, data: session } = useSession();
   const route = useRouter();
+  const isLoggedIn = useUserStore((state: any) => state.isLoggedIn);
+
+  console.log(isLoggedIn, "oti lo home");
 
   const items: MenuProps["items"] = [
     {
@@ -60,17 +66,25 @@ const AppHeader = () => {
       label: <Link href={"/dashboard/user/setting"}>Setting</Link>,
       icon: <IoSettingsSharp />,
     },
-    
+
     {
       key: "4",
       danger: true,
-      label: < Link href={'/api/auth/signout'}>"Logout"</Link> ,
+      label: <Link href={"/api/auth/signout"}>"Logout"</Link>,
       icon: <RiLogoutBoxLine />,
     },
   ];
 
+  const cartItems = useCartStore((state: any) => state.cartItems);
+  console.log(cartItems);
+  
   // drop down func
   const DropingDown = () => {
+
+  
+
+
+
     return (
       <Dropdown menu={{ items }}>
         <a onClick={(e) => e.preventDefault()}>
@@ -247,7 +261,7 @@ const AppHeader = () => {
               </div>
               <span>|</span>
               <div className="flex items-center space-x-4">
-                <Badge count={5}>
+                <Badge count={cartItems.length }>
                   <HiOutlineShoppingBag
                     size={30}
                     onClick={() => {
