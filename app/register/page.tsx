@@ -4,7 +4,7 @@ import CustomBtn from "../components/button/CustomBtn";
 import { Checkbox } from "antd";
 import Link from "next/link";
 import CustomTextArea from "../components/customInputs/CustomTextArea";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 
 const Register = () => {
   return (
