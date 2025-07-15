@@ -1,8 +1,8 @@
 "use client";
 import { Table } from "antd";
-import React, { useEffect } from "react";
+import React from "react";
 import BreadCrumb from "../components/breadCrumbs/BreadCrumb";
-import img from "@/app/assets/images/productOne.png";
+// import img from "@/app/assets/images/productOne.png";
 import CustomInputNumber from "../components/customsInputNumber/CustomInputNumber";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import Image, { StaticImageData } from "next/image";
