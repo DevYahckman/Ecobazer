@@ -9,9 +9,6 @@ import { IProducts } from "@/app/interfaces/products";
 import ProductCard from "../components/ProductCard/ProductCard";
 import useFilterGoods from "./useFilterGoods";
 
-
-
-
 const Shop = () => {
   const {
     categoryOption,
@@ -21,6 +18,7 @@ const Shop = () => {
     handlePrice,
     selectedPrice,
     priceOption,
+    productData,
   } = useFilterGoods();
   const verdictOption = [
     { label: "Approved", value: "approved" },
@@ -63,26 +61,29 @@ const Shop = () => {
         <div className="md:flex space-y-3 justify-between items-center py-4">
           <div className="flex items-center space-x-5">
             <CustomSelects
-            className="md:w-40 w-24"
+              className="md:w-40 w-24"
               options={categoryOption}
               placholder="Select Category"
               value={selectCategories}
               onChange={handleCategory}
             />
             <CustomSelects
-            className="md:w-40 w-24"
+              className="md:w-40 w-24"
               options={priceOption}
               placholder="Select Price"
-              value={selectedPrice.join('-')}
+              value={selectedPrice.join("-")}
               onChange={handlePrice}
             />
             <CustomSelects
-            className="md:w-40 w-24" options={verdictOption} placholder="Select Rating" />
+              className="md:w-40 w-24"
+              options={verdictOption}
+              placholder="Select Rating"
+            />
           </div>
 
           <div className="flex items-center space-x-5 ">
             <CustomSelects
-            className="md:w-40 w-24"
+              className="md:w-40 w-24"
               options={verdictOption}
               placholder="Sortby: Latest"
             />
@@ -92,6 +93,7 @@ const Shop = () => {
         <div className="  my-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:px-10 md:space-x-2">
           {filteredGoods.map((item: IProducts) => (
             <ProductCard
+              id={item.id}
               img={item.img}
               productName={item.productName}
               price={item.price}

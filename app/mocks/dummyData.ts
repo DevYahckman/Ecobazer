@@ -32,8 +32,11 @@ import {
   ITopCategory,
 } from "../interfaces/products";
 
+
+
 export const productData: IProducts[] = [
   {
+    id:1,
     img: apple,
     productName: "Green Apple",
     price: 14.99,
@@ -50,6 +53,7 @@ export const productData: IProducts[] = [
     },
   },
   {
+    id:2,
     img: cabage,
     productName: "Chanise Cabbage",
     price: 114.99,
@@ -66,6 +70,7 @@ export const productData: IProducts[] = [
     },
   },
   {
+    id:3,
     img: lettuce,
     productName: "Green Lettuce",
     price: 14.99,
@@ -82,6 +87,7 @@ export const productData: IProducts[] = [
     },
   },
   {
+    id:4,
     img: lettuce,
     productName: "Water",
     price: 14.99,
@@ -98,6 +104,7 @@ export const productData: IProducts[] = [
     },
   },
   {
+    id:5,
     img: chill,
     productName: "Green Chili ",
     price: 14.99,
@@ -114,6 +121,7 @@ export const productData: IProducts[] = [
     },
   },
   {
+    id:6,
     img: corn,
     productName: "Corn",
     price: 14.99,
@@ -359,3 +367,5 @@ export const twoHundredDummyText = ` Lorem ipsum dolor sit amet consectetur adip
               corporis dignissimos aliquam ab nam! Fugiat nemo quia quidem,
               culpa assumenda totam quisquam? Odit a ipsum ducimus quisquam
               deserunt nam eaque corrupti iste modi.`;
+
+              

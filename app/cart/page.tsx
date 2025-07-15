@@ -1,6 +1,6 @@
 "use client";
 import { Table } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import BreadCrumb from "../components/breadCrumbs/BreadCrumb";
 import img from "@/app/assets/images/productOne.png";
 import CustomInputNumber from "../components/customsInputNumber/CustomInputNumber";
@@ -8,52 +8,60 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import Image, { StaticImageData } from "next/image";
 import CustomBtn from "../components/button/CustomBtn";
 import { useRouter } from "next/navigation";
+import { useCartStore } from "@/app/store/cartStore";
 
-interface ICart {
-  product: { img: StaticImageData; name: string };
-  price: { price: number };
-  quantity: React.ReactNode;
-  subtotal: { price: number; icon: React.ReactNode };
-}
+
+
 const Cart = () => {
+
+
+    // const {cartItems, removeFromCart, clearCart}=useCartStore((state:any)=>({
+    // cartItems: state.cartItems,
+    // removeFromCart: state.removeFromCart,
+    // clearCart: state.clearCart,
+    // }));
+
+  const removeFromCart = useCartStore((state: any) => state.removeFromCart);
+  const cartItems = useCartStore((state: any) => state.cartItems);
+
+  console.log(cartItems);
+  
+
+
+  interface ICart {
+    product: { img: StaticImageData; name: string };
+    price: { price: number };
+    quantity: React.ReactNode;
+    subtotal: { price: number; icon: React.ReactNode };
+  }
+
+
   const route = useRouter();
+  const subtotal = cartItems.reduce((total:any, item:any) => total + item.price, 0)
   const checkoutData = {
-    price: 84.5,
+    price: subtotal,
     shipping: "Free",
-    Total: 84.5,
+    Total: subtotal+2,
   };
-  const data = [
-    {
-      key: "1",
-      product: {
-        img: img,
-        name: "Green Apple ",
-      },
-      price: {
-        price: 32,
-      },
-      quantity: <CustomInputNumber />,
-      subtotal: {
-        price: 20,
-        icon: <IoIosCloseCircleOutline className="cursor-pointer" />,
-      },
-    },
-    {
-      key: "2",
-      product: {
-        img: img,
-        name: "Green Apple ",
-      },
-      price: {
-        price: 32,
-      },
-      quantity: <CustomInputNumber />,
-      subtotal: {
-        price: 20,
-        icon: <IoIosCloseCircleOutline className="cursor-pointer" />,
-      },
-    },
-  ];
+ 
+
+  const data = cartItems.map((item:any, index:any) => ({
+  key: `${index}`,
+  product: {
+    img: item.img,
+    name: item.productName,
+  },
+  price: {
+    price: item.price,
+  },
+  quantity: <CustomInputNumber />, //  later with real quantity support
+  subtotal: {
+    price: item.price, // You can multiply by quantity later
+    icon: <IoIosCloseCircleOutline className="cursor-pointer"
+     onClick={() => removeFromCart(item.id)} 
+     />,
+  },
+}));
 
   const columns = [
     {
@@ -96,7 +104,19 @@ const Cart = () => {
       },
     },
   ];
+ 
+
+
+  
+  
+
+
   return (
+
+
+
+
+
     <div>
       <BreadCrumb />
 
