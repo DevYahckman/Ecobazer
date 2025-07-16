@@ -15,7 +15,11 @@ import ProductCard from "../ProductCard/ProductCard";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 import Image from "next/image";
-import { ICustomerReview, IProducts, ITopCategory } from "@/app/interfaces/products";
+import {
+  ICustomerReview,
+  IProducts,
+  ITopCategory,
+} from "@/app/interfaces/products";
 import StarRatings from "../rating/StarRatings";
 
 const TopCategory = () => {
@@ -183,6 +187,7 @@ const TopCategory = () => {
         <div className="  my-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 md:px-10 md:space-x-2">
           {productData.map((item: IProducts) => (
             <ProductCard
+              id={item.id}
               img={item.img}
               productName={item.productName}
               price={item.price}
@@ -201,13 +206,13 @@ const TopCategory = () => {
           <div className="flex items mb-4 md:space-x-3">
             <button
               className="bg-white text-black p-2 rounded-full hover:bg-success hover:text-white transition duration-300"
-              // onClick={() => splideRef.current?.splide.go("<")} 
+              // onClick={() => splideRef.current?.splide.go("<")}
             >
               <FaArrowLeft />
             </button>
             <button
               className="bg-white text-black p-2 rounded-full hover:bg-success hover:text-white transition duration-300"
-              // onClick={() => splideRef.current?.splide.go(">")} 
+              // onClick={() => splideRef.current?.splide.go(">")}
             >
               <FaArrowRight />
             </button>
@@ -215,11 +220,12 @@ const TopCategory = () => {
         </div>
 
         <div className=" ">
-          
-
           <Splide ref={splideRef} options={customerSettings}>
             {customerReview.map((item: ICustomerReview, i: number) => (
-              <SplideSlide key={i} className="bg-[#f7fafc] w-full rounded-lg space-y-4 shadow hover:shadow-md cursor-pointer  border border-gray-300  p-5 ">
+              <SplideSlide
+                key={i}
+                className="bg-[#f7fafc] w-full rounded-lg space-y-4 shadow hover:shadow-md cursor-pointer  border border-gray-300  p-5 "
+              >
                 <Image src={quote} alt="quaote" />
 
                 <p className="text-lightGray font-medium text-base">
@@ -236,7 +242,7 @@ const TopCategory = () => {
                   </div>
 
                   <div>
-                    < StarRatings rating={item.rating} size={24}/>
+                    <StarRatings rating={item.rating} size={24} />
                   </div>
                 </div>
               </SplideSlide>

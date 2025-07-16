@@ -21,7 +21,6 @@ import AdditionalInfo from "./AdditionalInfo";
 import BreadCrumb from "@/app/components/breadCrumbs/BreadCrumb";
 import Link from "next/link";
 
-
 const src = "https://www.youtube.com/embed/Ibgb2eKGnys";
 
 const SingleProduct = () => {
@@ -56,12 +55,14 @@ const SingleProduct = () => {
   ];
   return (
     <div className="">
-      < BreadCrumb>
-      <Link href={'#'}>Category</Link>
-      < PiGreaterThanLight size={10}/>
-      <Link href={'#'}>Vegetabele</Link>
-      < PiGreaterThanLight size={10}/>
-      <Link href={'#'} className="text-success">Chinese Cabage</Link>
+      <BreadCrumb>
+        <Link href={"#"}>Category</Link>
+        <PiGreaterThanLight size={10} />
+        <Link href={"#"}>Vegetabele</Link>
+        <PiGreaterThanLight size={10} />
+        <Link href={"#"} className="text-success">
+          Chinese Cabage
+        </Link>
       </BreadCrumb>
 
       <div className="p-5 grid grid-cols-1 md:grid-cols-2 min-h-40">
@@ -145,6 +146,7 @@ const SingleProduct = () => {
         <div className="  my-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:px-10 md:space-x-2">
           {productData.slice(0, 4).map((item: IProducts) => (
             <ProductCard
+              id={item.id}
               img={item.img}
               productName={item.productName}
               price={item.price}

@@ -37,7 +37,7 @@ const Cart = () => {
 
 
   const route = useRouter();
-  const subtotal = cartItems.reduce((total, item) => total + item.price, 0)
+  const subtotal = cartItems.reduce((total, item) => total + (item.price??0), 0)
   const checkoutData = {
     price: subtotal,
     shipping: "Free",

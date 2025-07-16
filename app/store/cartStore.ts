@@ -4,8 +4,8 @@ import { StaticImageData } from "next/image";
 
 interface CartItem {
   id:number
-  productName: string;
-  price: number;
+  productName?: string;
+  price?: number;
   img: StaticImageData;
   units?: number;
   description?: string;
