@@ -1,11 +1,23 @@
 import { create } from "zustand";
 
+interface UserItems {
+ email: string;
+ image: string; 
+  name: string;
+}
+
+interface UserState {
+  user: UserItems | null;
+  isLoggedIn: boolean;
+  setUser: (userData: UserItems) => void;
+}
+
 
     
-    export const useUserStore = create((set)=>({
+    export const useUserStore = create<UserState>((set)=>({
       user: null,
       isLoggedIn: false,
-      setUser: (userData: any) => set({ user: userData, isLoggedIn:true })
+      setUser: (userData) => set({ user: userData, isLoggedIn:true })
 
 }))
 

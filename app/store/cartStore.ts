@@ -3,6 +3,7 @@ import { StaticImageData } from "next/image";
 
 
 interface CartItem {
+  id:number
   productName: string;
   price: number;
   img: StaticImageData;
@@ -14,15 +15,15 @@ interface CartItem {
 interface CartState {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
-  removeFromCart: (id: string) => void;
+  removeFromCart: (id: number) => void;
   clearCart: () => void;
 }
 
 
 export const useCartStore = create<CartState>((set)=> ({
   cartItems: [],
-  addToCart: (item:any) => set((state:any) => ({ cartItems: [...state.cartItems, item] })),
-    removeFromCart: (itemId:any) => set((state:any) => ({
+  addToCart: (item) => set((state) => ({ cartItems: [...state.cartItems, item] })),
+    removeFromCart: (itemId:number) => set((state) => ({
         cartItems: state.cartItems.filter(item => item.id !== itemId)
     })),
     clearCart: () => set({ cartItems: [] }),

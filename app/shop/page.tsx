@@ -18,7 +18,7 @@ const Shop = () => {
     handlePrice,
     selectedPrice,
     priceOption,
-    productData,
+    // productData,
   } = useFilterGoods();
   const verdictOption = [
     { label: "Approved", value: "approved" },

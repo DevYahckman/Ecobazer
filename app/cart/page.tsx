@@ -21,8 +21,8 @@ const Cart = () => {
     // clearCart: state.clearCart,
     // }));
 
-  const removeFromCart = useCartStore((state: any) => state.removeFromCart);
-  const cartItems = useCartStore((state: any) => state.cartItems);
+  const removeFromCart = useCartStore((state) => state.removeFromCart);
+  const cartItems = useCartStore((state) => state.cartItems);
 
   console.log(cartItems);
   
@@ -37,7 +37,7 @@ const Cart = () => {
 
 
   const route = useRouter();
-  const subtotal = cartItems.reduce((total:any, item:any) => total + item.price, 0)
+  const subtotal = cartItems.reduce((total, item) => total + item.price, 0)
   const checkoutData = {
     price: subtotal,
     shipping: "Free",
@@ -45,7 +45,7 @@ const Cart = () => {
   };
  
 
-  const data = cartItems.map((item:any, index:any) => ({
+  const data = cartItems.map((item, index) => ({
   key: `${index}`,
   product: {
     img: item.img,
