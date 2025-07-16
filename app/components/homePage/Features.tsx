@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { productData } from "@/app/mocks/dummyData";
@@ -30,7 +30,7 @@ const Features = () => {
           <div className="group-hover:hidden ">
             <p className="text-gray-700 font-medium text-base">{productName}</p>
             <p className="font-semibold text-deepGray mt-2">${price}</p>
-            < StarRatings rating={3.5}/>
+            <StarRatings rating={3.5} />
           </div>
 
           <div className="hidden group-hover:flex space-x-8 ">
@@ -47,9 +47,9 @@ const Features = () => {
     <div className="min-h-screen mt-44 md:mt-0">
       <h1 className="header">Featured Products</h1>
       <div className="  my-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 px-10 space-x-2">
-       
         {productData.map((item: IProducts) => (
           <ProductCard
+            id={item.id}
             img={item.img}
             productName={item.productName}
             price={item.price}
@@ -59,13 +59,12 @@ const Features = () => {
             category={item.category}
           />
         ))}
-      
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 mx-10 my-5 gap-x-5">
         <div className="">
           <p className="text-deepGray text-base font-semibold">Hot deal</p>
-          {productData.slice(0, 4).map((item, i:number) => (
+          {productData.slice(0, 4).map((item, i: number) => (
             <HotDealCard
               img={item.img}
               productName={item.productName}
@@ -100,9 +99,14 @@ const Features = () => {
           className=" bg-cover bg-center rounded-lg min-h-[428px] text-center py-12 space-y-3"
           style={{ backgroundImage: `url(${deal.src})` }}
         >
-          <p className="text-deepGray uppercase font-semibold text-sm">Summer Sale</p>
+          <p className="text-deepGray uppercase font-semibold text-sm">
+            Summer Sale
+          </p>
           <p className="text-success text-4xl font-bold">75% Off</p>
-          <button className="btn bg-white hover:bg-white rounded-full text-success"> Shop Now &rarr;{" "}</button>
+          <button className="btn bg-white hover:bg-white rounded-full text-success">
+            {" "}
+            Shop Now &rarr;{" "}
+          </button>
         </div>
       </div>
     </div>
