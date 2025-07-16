@@ -14,12 +14,13 @@ import config from "../../config.json";
 import Swal from "sweetalert2";
 import { useUserStore } from "../store/userStore";
 
+
 const Login = () => {
   const router = useRouter();
-  const setUser = useUserStore((state: any) => state.setUser);
-  const isLoggedIn = useUserStore((state: any) => state.isLoggedIn);
+  const setUser = useUserStore((state) => state.setUser);
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
 
-  console.log(isLoggedIn, 'logged in');
+  console.log(isLoggedIn, "logged in");
 
   const formik = useFormik({
     initialValues: {
@@ -35,10 +36,9 @@ const Login = () => {
         localStorage.setItem("token", jwt);
 
         window.location.href = "/";
-      } catch (error: any) {
+      } catch (error) {
         console.log(error, "error");
-        const errorMessage =
-          error?.response?.data?.message || "An unexpected error occurred.";
+        const errorMessage = "An unexpected error occurred.";
 
         formik.errors.email = errorMessage;
         Swal.fire({

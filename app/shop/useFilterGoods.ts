@@ -17,6 +17,8 @@ const priceOption = [
   { label: 2001 - 4000, value: "2001-4000" },
 ];
 
+
+
 const useFilterGoods = () => {
   const [selectCategories, setSelectCategories] = useState<string | null>(null);
   const [selectedPrice, setSelectedPrice] = useState<number[]>([5, 5000]);

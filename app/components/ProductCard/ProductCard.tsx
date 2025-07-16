@@ -40,8 +40,8 @@ const ProductCard = ({
     setLike(!like);
   };
 
-  const addToCart = useCartStore((state: any) => state.addToCart);
-  const cartItems = useCartStore((state: any) => state.cartItems);
+  const addToCart = useCartStore((state) => state.addToCart);
+  const cartItems = useCartStore((state) => state.cartItems);
 
   console.log(cartItems);
 

@@ -16,7 +16,7 @@ import logo from "@/app/assets/svg/logo.svg";
 import userImage from "@/app/assets/images/customer-2.png";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
-import product from "@/app/assets/images/productOne.png";
+// import product from "@/app/assets/images/productOne.png";
 import { Divider } from "antd";
 import CustomBtn from "../button/CustomBtn";
 import { useRouter } from "next/navigation";
@@ -46,7 +46,7 @@ const AppHeader = () => {
   const isMobile = useCheckIsMobile();
   const { status, data: session } = useSession();
   const route = useRouter();
-  const isLoggedIn = useUserStore((state: any) => state.isLoggedIn);
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
 
   console.log(isLoggedIn, "oti lo home");
 
@@ -70,14 +70,14 @@ const AppHeader = () => {
     {
       key: "4",
       danger: true,
-      label: <Link href={"/api/auth/signout"}>"Logout"</Link>,
+      label: <Link href={"/api/auth/signout"}>Logout</Link>,
       icon: <RiLogoutBoxLine />,
     },
   ];
 
-  const cartItems = useCartStore((state: any) => state.cartItems);
-  const removeFromCart = useCartStore((state: any) => state.removeFromCart);
-  const subtotal = cartItems.reduce((total:any, item:any) => total + item.price, 0)
+  const cartItems = useCartStore((state) => state.cartItems);
+  const removeFromCart = useCartStore((state) => state.removeFromCart);
+  const subtotal = cartItems.reduce((total, item) => total + item.price, 0)
 
   console.log(cartItems);
   
@@ -113,18 +113,18 @@ const AppHeader = () => {
     setOpenCart(!openCart);
   };
 
-  const cartData = [
-    {
-      img: product,
-      name: "Green Apple ",
-      units: 10,
-    },
-    {
-      img: product,
-      name: "Green Apple ",
-      units: 10,
-    },
-  ];
+  // const cartData = [
+  //   {
+  //     img: product,
+  //     name: "Green Apple ",
+  //     units: 10,
+  //   },
+  //   {
+  //     img: product,
+  //     name: "Green Apple ",
+  //     units: 10,
+  //   },
+  // ];
 
   const navItem: navProps[] = [
     {
@@ -311,7 +311,7 @@ const AppHeader = () => {
                   />
                 </div>
                 <Divider />
-                {cartItems.map((item:any, i: number) => (
+                {cartItems.map((item, i: number) => (
                   <div key={i} className="flex items-center justify-between">
                     <div className="my-2 flex space-x-3 items-center">
                       <Image
