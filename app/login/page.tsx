@@ -14,7 +14,6 @@ import config from "../../config.json";
 import Swal from "sweetalert2";
 import { useUserStore } from "../store/userStore";
 
-
 const Login = () => {
   const router = useRouter();
   const setUser = useUserStore((state) => state.setUser);
@@ -33,9 +32,10 @@ const Login = () => {
         const { data: jwt } = await http.post(`${config.apiUrl}/auth`, values);
         setUser(jwt);
         console.log(jwt);
-        localStorage.setItem("token", jwt);
-
-        window.location.href = "/";
+        if (typeof window !== "undefined") {
+          localStorage.setItem("token", jwt);
+          window.location.href = "/";
+        }
       } catch (error) {
         console.log(error, "error");
         const errorMessage = "An unexpected error occurred.";
