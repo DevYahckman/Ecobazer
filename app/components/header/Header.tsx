@@ -77,7 +77,7 @@ const AppHeader = () => {
 
   const cartItems = useCartStore((state) => state.cartItems);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
-  const subtotal = cartItems.reduce((total, item) => total + item.price, 0)
+  const subtotal = cartItems.reduce((total, item) => total + (item.price??0), 0)
 
   console.log(cartItems);
   
