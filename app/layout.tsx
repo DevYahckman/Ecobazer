@@ -16,6 +16,10 @@ import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
 
 import SessionWrapper from "./components/sessionWrapper/SessionWrapper";
+import { useState } from "react";
+
+
+// const [supaBaseSession, setSupabaseSession] = useState(null);
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
