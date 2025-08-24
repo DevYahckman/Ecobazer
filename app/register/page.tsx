@@ -11,9 +11,6 @@ import { supabase } from "@/supabase-client";
 // import { useSession } from "next-auth/react";
 
 const Register = () => {
-
-
-
   const validateUser = () => {
     return Yup.object({
       username: Yup.string().required("Name is Required"),
@@ -32,8 +29,6 @@ const Register = () => {
     });
   };
 
- 
-
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -42,7 +37,7 @@ const Register = () => {
       email: "",
       address: "",
       password: "",
-      user_image:'',
+      user_image: "",
     },
 
     validationSchema: validateUser(),
@@ -67,7 +62,6 @@ const Register = () => {
       }
 
       if (user_image && data?.user) {
-       
         // @ts-ignore
         const file: File = user_image as File;
         console.log(file, "file object");
@@ -76,20 +70,34 @@ const Register = () => {
         const fileName = `${Date.now()}.${fileExt}`;
         const filePath = `user_image/${fileName}`;
 
+        // Getting public URL
+        const { data: publicUrlData } = supabase.storage
+          .from("userimage")
+          .getPublicUrl(filePath);
+        const publicImageUrl = publicUrlData.publicUrl;
+
+        console.log(publicImageUrl, "public url" );
         
+
+        // Saving file
         const { data: uploadData, error: uploadError } = await supabase.storage
-        .from("userimage")
-        .upload(filePath, file);
+          .from("userimage")
+          .upload(filePath, file);
 
         if (uploadError) {
           console.error("Image upload error:", uploadError);
           return;
         }
-        
-        imageUrl = filePath; // Store the file path in the database
-        console.log("User image type:", typeof user_image, user_image);
-          console.log(imageUrl, "oododododdodododododoododododo");
+
+
+
+        imageUrl = publicImageUrl; // Store the file path in the database
+    
       }
+
+      
+   
+      
 
       if (data?.user) {
         const { error: insertError } = await supabase

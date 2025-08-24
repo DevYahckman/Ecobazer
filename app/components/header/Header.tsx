@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useCheckIsMobile from "@/app/hooks/useCheckIsMobile";
 import { SlLocationPin } from "react-icons/sl";
 import { FiHeart } from "react-icons/fi";
@@ -13,7 +13,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/assets/svg/logo.svg";
-import userImage from "@/app/assets/images/customer-2.png";
+// import userImage from "@/app/assets/images/customer-2.png";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 // import product from "@/app/assets/images/productOne.png";
@@ -31,6 +31,8 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { useUserStore } from "@/app/store/userStore";
 import { useCartStore } from "@/app/store/cartStore";
+import Swal from "sweetalert2";
+import { supabase } from "@/supabase-client";
 
 
 interface navProps {
@@ -46,9 +48,42 @@ const AppHeader = () => {
   const isMobile = useCheckIsMobile();
   const { status, data: session } = useSession();
   const route = useRouter();
+  const user= useUserStore((state)=>state.user)
   const isLoggedIn = useUserStore((state) => state.isLoggedIn);
+  const fetchUser = useUserStore((state) => state.fetchUser);
+  const userImage = user?.image || "https://www.gravatar.com/avatar/"
+console.log(user, 'userjkenfef');
 
-  console.log(isLoggedIn, "oti lo home");
+    useEffect(()=>{
+      fetchUser()
+
+      const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+        console.log(event, 'the event');
+        if (event === 'SIGNED_IN' || event === 'SIGNED_OUT') {
+          fetchUser();
+        }
+      });
+
+      return () => {
+        authListener?.subscription.unsubscribe();
+      };
+      
+    },[])
+
+// logout 
+  const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.message,
+        });
+        } else {
+        Swal.fire("Success", "Logged out successfully", "success");
+        }
+    };
+
 
   const items: MenuProps["items"] = [
     {
@@ -70,7 +105,7 @@ const AppHeader = () => {
     {
       key: "4",
       danger: true,
-      label: <Link href={"/api/auth/signout"}>Logout</Link>,
+      label: <Link href={"#"} onClick={handleLogout}>Logout</Link>,
       icon: <RiLogoutBoxLine />,
     },
   ];
@@ -94,7 +129,7 @@ const AppHeader = () => {
           <Space>
             {/* <p>{session && session.user?.name}</p> */}
             <Avatar
-              src={<Image src={userImage} alt="user Image" />}
+              src={userImage}
               size={50}
               className=" cursor-pointer"
             />
@@ -224,7 +259,7 @@ const AppHeader = () => {
               <span>|</span>
               <Link href={"#"}>NGN </Link>
               <span>|</span>
-              {status !== "authenticated" && (
+              {isLoggedIn !== true && (
                 <>
                   <Link href={"/register"}>SignUp </Link>
                   <span>|</span>
@@ -282,7 +317,7 @@ const AppHeader = () => {
                   <p className=" text-sm text-deepGray font-bold ">$57.00</p>
                 </div>
               </div>
-              {status === "authenticated" && (
+              {isLoggedIn === true && (
                 <>
                   <span>|</span>
                   <div>
@@ -374,7 +409,7 @@ const AppHeader = () => {
             </div>
             <div className="flex items-center space-x-2 text-deepGray font-bold">
               <FiPhoneCall size={20} />
-              <div>+34 9474 3434</div>
+              <div>+234 {user?.phone}</div>
             </div>
           </div>
         </div>
