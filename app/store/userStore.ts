@@ -34,7 +34,7 @@ export const useUserStore = create<UserState>((set) => ({
 
     if (session?.user) {
       const userId = session.user.id;
-      console.log("User ID:;;;;;;;;;;;;;;;;;;;;:", userId);
+ 
 
       const { data: profileData, error: profileError } = await supabase
         .from("userProfiles").select("*")
@@ -52,8 +52,8 @@ export const useUserStore = create<UserState>((set) => ({
       set({
         user: {
           email: session.user.email || "",
-          image: profileData.user_image || "",
-          name: session.user.user_metadata?.name || "",
+          image: profileData?.user_image || "",
+          name: profileData.fullname || "",
           phone: profileData.phone || "",
           address: profileData.address || "",
         },
