@@ -1,49 +1,66 @@
 import { create } from "zustand";
+import { supabase } from "@/supabase-client";
 
 interface UserItems {
- email: string;
- image: string; 
+  email: string;
+  image: string;
   name: string;
+  phone: string;
+  address: string;
 }
 
 interface UserState {
   user: UserItems | null;
   isLoggedIn: boolean;
   setUser: (userData: UserItems) => void;
+  fetchUser: () => Promise<void>;
 }
 
+export const useUserStore = create<UserState>((set) => ({
+  user: null,
+  isLoggedIn: false,
+  setUser: (userData) => set({ user: userData, isLoggedIn: true }),
 
-    
-    export const useUserStore = create<UserState>((set)=>({
-      user: null,
-      isLoggedIn: false,
-      setUser: (userData) => set({ user: userData, isLoggedIn:true })
+  fetchUser: async () => {
+    const { data, error } = await supabase.auth.getSession();
 
-}))
+    if (error) {
+      console.error("Error fetching session:", error);
+      return;
+    }
+
+    const session = data.session;
 
 
-// import { create } from 'zustand';
-// import { persist } from 'zustand/middleware';
+    if (session?.user) {
+      const userId = session.user.id;
+ 
 
-// const useUserStore = create(
-//   persist(
-//     (set) => ({
-//       user: null, // Initially, no user is logged in
-//       setUser: (userData) => set({ user: userData }), // Set user data
-//       clearUser: () => set({ user: null }), // Clear user on logout
-//     }),
-//     {
-//       name: 'user-store', // Key for localStorage
-//     }
-//   )
-// );
+      const { data: profileData, error: profileError } = await supabase
+        .from("userProfiles").select("*")
+        .eq("userId", userId).single()
 
-// import { create } from "zustand";
+        if(profileError){
+          console.error(profileError,'errrrrrrrrrrrrrrrrrrrr')
+        }else{
+          console.log(profileData);
+          
+        }
 
-// export const useUserStore = create((set) => ({
-//     user: null, // Default value for user
-//     isLoggedIn: false, // Default value for login status
-//     setUser: (userData) => set({ user: userData, isLoggedIn: true }), // Updates user and login status
-//     clearUser: () => set({ user: null, isLoggedIn: false }), // Clears user and resets login status
-//   }));
-  
+
+      
+      set({
+        user: {
+          email: session.user.email || "",
+          image: profileData?.user_image || "",
+          name: profileData.fullname || "",
+          phone: profileData.phone || "",
+          address: profileData.address || "",
+        },
+        isLoggedIn: true,
+      });
+    } else {
+      set({ user: null, isLoggedIn: false });
+    }
+  },
+}));

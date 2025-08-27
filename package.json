@@ -12,6 +12,7 @@
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide": "^4.1.4",
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+    "@supabase/supabase-js": "^2.52.1",
     "@types/react-stars": "^2.2.4",
     "antd": "^5.21.2",
     "axios": "^1.7.9",

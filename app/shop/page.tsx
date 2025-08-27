@@ -52,6 +52,9 @@ const Shop = () => {
           </div>
         </div>
 
+
+
+
         <div className="w-[50%]">
           <ShopBtn />
         </div>

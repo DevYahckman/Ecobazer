@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import CustomInput from "../components/customInputs/CustomInput";
 import CustomBtn from "../components/button/CustomBtn";
 import { Checkbox, Divider } from "antd";
@@ -13,6 +13,7 @@ import http from "../services/httpSetvice";
 import config from "../../config.json";
 import Swal from "sweetalert2";
 import { useUserStore } from "../store/userStore";
+import { supabase } from "@/supabase-client";
 
 const Login = () => {
   const router = useRouter();
@@ -28,25 +29,40 @@ const Login = () => {
     },
     validationSchema: validateUserLogin(),
     onSubmit: async (values) => {
-      try {
-        const { data: jwt } = await http.post(`${config.apiUrl}/auth`, values);
-        setUser(jwt);
-        console.log(jwt);
-        if (typeof window !== "undefined") {
-          localStorage.setItem("token", jwt);
-          window.location.href = "/";
-        }
-      } catch (error) {
-        console.log(error, "error");
-        const errorMessage = "An unexpected error occurred.";
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
+      });
 
-        formik.errors.email = errorMessage;
+      console.log(user, "the user");
+
+      if (error) {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: errorMessage,
+          text: error.message,
         });
+      } else {
+        Swal.fire("Success", "Login Successfully", "success");
+        router.push("/");
       }
+      const { data: profile, error: profileError } = await supabase
+        .from("userProfile")
+        .select("image")
+        .eq("userId", user?.id)
+        .single();
+
+
+        if(profileError){
+          console.log(profileError, 'profile error');
+          
+        }else{
+          console.log(profile, 'profile');
+          
+        }
     },
   });
 
